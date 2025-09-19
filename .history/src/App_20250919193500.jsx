@@ -1,0 +1,36 @@
+import { useEffect, useState } from 'react';
+import LoadingPage from "./components/LoadingPage";
+
+
+import './App.css'
+
+function App() {
+   const [loading, setLoading] = useState(true);
+
+     useEffect(() => {
+       const handleLoad = () => {
+         // check for user in localStorage (or cookie)
+         const savedUser = localStorage.getItem("bluejobs_user");
+         if (savedUser) {
+           setUser(JSON.parse(savedUser));
+         }
+         setLoading(false);
+       };
+
+       if (document.readyState === "complete") {
+         handleLoad();
+       } else {
+         window.addEventListener("load", handleLoad);
+       }
+
+       return () => window.removeEventListener("load", handleLoad);
+     }, []);
+
+  return (
+    <>
+      
+    </>
+  )
+}
+
+export default App

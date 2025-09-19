@@ -1,0 +1,74 @@
+/* src/pages/Signup.css */
+.App {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: system-ui, sans-serif;
+}
+
+.signup-page {
+  max-width: 600px;
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--text);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.signup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+
+.form-group input {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color:transparent;
+}
+
+.signup-btn {
+  width: 100%;
+  padding: 0.8rem;
+  background: #007bff;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.signup-btn:hover {
+  background: #0056b3;
+}
+
+/* Light/Dark theme */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #fff;
+    --text: #0d0d0d;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0d0d0d;
+    --text: #f0f0f0;
+  }
+}
