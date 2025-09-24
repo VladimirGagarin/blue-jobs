@@ -7,6 +7,7 @@ import { useLanguage } from './components/useUser.js';
 import Navbar from './components/Navbar.jsx';
 import AboutContent from './components/About.jsx';
 import HomeContent from "./components/HomeScreen.jsx";
+import Footer from './components/footer';
 
 import './App.css'
 
@@ -101,9 +102,7 @@ function App() {
       <main>
         {contentPanels[currentPanel]}
       </main>
-      <footer>
-        <p>&copy; 2024 Blue Jobs. All rights reserved.</p>
-      </footer>
+      <Footer/>
 
     </div>
   );
