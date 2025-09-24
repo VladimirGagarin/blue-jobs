@@ -1,0 +1,108 @@
+/* Guest Page Styles */
+:root {
+  /* Light mode (default) */
+  --guest-bg-color: #f9fafb;
+  --guest-text-color: #333;
+  --guest-border-color: #eee;
+  --guest-button-bg: #4f46e5;
+  --guest-button-text: #fff;
+  --guest-button-border: #4f46e5;
+}
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --guest-bg-color: #1a1a1a;
+    --guest-text-color: #f1f1f1;
+    --guest-border-color: #444;
+    --guest-button-bg: #6366f1;
+    --guest-button-text: #fff;
+    --guest-button-border: #6366f1;
+  }
+}
+.guest-page {
+  background: var(--guest-bg-color);
+  color: var(--guest-text-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+.guest-page-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.guest-page-logo {
+  max-width: 300px;
+  margin-bottom: 1rem;
+  height: 200px;
+}
+.guest-page-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.guest-page-content {
+  text-align: center;
+}
+.guest-page-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+    gap: 1rem;
+}
+.guest-card {
+  background: var(--guest-button-bg);
+  color: var(--guest-button-text);
+  border: 1px solid var(--guest-button-border);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+.guest-card:hover {
+  background: var(--guest-button-text);
+  color: var(--guest-button-bg);
+}
+.guest-card-icon {
+  max-width: 24px;
+  margin-right: 0.5rem;
+}
+.guest-card-text {
+  font-weight: bold;
+}
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+.guest-page-button:hover {
+  background: var(--guest-button-text);
+  color: var(--guest-button-bg);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .guest-page {
+    padding: 1rem;
+  }
+  .guest-page-title {
+    font-size: 1.5rem;
+  }
+  .guest-page-button {
+    padding: 0.5rem 1rem;
+  }
+}
+
+/* 480px and below */
+@media (max-width: 480px) {
+  .guest-page-buttons {
+    width: 100%;
+  }
+  .guest-page-button {
+    width: 100%;
+    text-align: center;
+  }
+}
+

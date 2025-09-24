@@ -1,0 +1,120 @@
+:root {
+    --primary-color: #4f46e5;
+    --secondary-color: #f1f1f1;
+    --text-color: #d7dce2;
+    --border-radius: 5px;
+    --transition: all 0.3s ease;
+}
+
+.guest-page {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.guest-page h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.guest-page p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.guest-page button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.guest-page button:nth-child(2) {
+    margin-right: 10px;
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.guest-page button:hover {
+    background-color: darken(var(--primary-color), 10%);
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --secondary-color: #1e1e1e;
+        --text-color: #f1f1f1;
+    }
+
+    .guest-page {
+        background-color: var(--secondary-color);
+        color: var(--text-color);
+        box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+    }
+
+    .guest-page button {
+        background-color: var(--primary-color);
+        color: white;
+    }
+
+    .guest-page button:hover {
+        background-color: darken(var(--primary-color), 10%);
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    :root {
+        --primary-color: #000000;
+        --secondary-color: #ffffff;
+        --text-color: #000000;
+    }
+
+    .guest-page {
+        background-color: var(--secondary-color);
+        color: var(--text-color);
+        border: 2px solid var(--text-color);
+    }
+
+    .guest-page button {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        border: 2px solid var(--text-color);
+    }
+
+    .guest-page button:hover {
+        background-color: var(--text-color);
+        color: var(--primary-color);
+    }
+}
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .guest-page button {
+        transition: none;
+    }
+}
+/* Print styles */
+@media print {
+    .guest-page {
+        background: white;
+        color: black;
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+
+    .guest-page button {
+        display: none;
+    }
+}

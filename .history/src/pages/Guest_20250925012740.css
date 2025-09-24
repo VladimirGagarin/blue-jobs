@@ -1,0 +1,4 @@
+/* Guest Page Styles */
+:root {
+  /* Light mode (default) */
+  --guest-bg-color: #f9fafb;

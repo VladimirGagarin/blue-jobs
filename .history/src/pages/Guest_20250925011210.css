@@ -1,0 +1,41 @@
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #f1f1f1;
+    --text-color: #333;
+    --border-radius: 5px;
+    --transition: all 0.3s ease;
+}
+
+.guest-page {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.guest-page h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.guest-page p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.guest-page button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.guest-page button:hover {
+    background-color: darken(var(--primary-color), 10%);
+}
+
+/* Dark mode support */
