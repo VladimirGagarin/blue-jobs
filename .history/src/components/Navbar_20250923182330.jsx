@@ -1,0 +1,43 @@
+import Logo from "../assets/logo.svg";
+import "./Navbar.css";
+import { useUser } from "./useUser.js";
+import { useNavigate } from "react-router-dom";
+import { useLanguage } from "./useUser.js";
+import 
+
+const Navbar = () => {
+  const { user } = useUser();
+  const navigate = useNavigate();
+    const { language } = useLanguage();
+    const userIsLoggedIn = user && user.userId !== "guest";
+
+  return (
+      <nav className="navbar">
+          <div className="left-side">
+              <div className="east-side">
+                  <img src={Logo} alt="Logo" className="logo" />
+              </div>
+              <div className="brand-name" onClick={() => navigate("/")}>
+                  <h1>Blue Jobs</h1>
+                </div>
+          </div>
+      <ul className="nav-links">
+        <li onClick={() => navigate("/")}>{language === 'fr' ? 'Accueil' : 'Home'}</li>
+        <li onClick={() => navigate("/about")}>{language === 'fr' ? 'À propos' : 'About'}</li>
+        {userIsLoggedIn ? (
+          <>
+            <li onClick={() => navigate("/profile")}>{language === 'fr' ? 'Profil' : 'Profile'}</li>
+            <li onClick={() => navigate("/logout")}>{language === 'fr' ? 'Déconnexion' : 'Logout'}</li>
+          </>
+        ) : (
+          <>
+            <li onClick={() => navigate("/login")}>{language === 'fr' ? 'Connexion' : 'Login'}</li>
+            <li onClick={() => navigate("/signup")}>{language === 'fr' ? 'Inscription' : 'Signup'}</li>
+          </>
+        )}
+      </ul>
+    </nav>
+  );
+};
+
+export default Navbar;

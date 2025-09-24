@@ -1,0 +1,96 @@
+/* Navbar.css */
+/* Dark and  light mode styles for Navbar component */
+/* Light mode (default) */
+/* all screen sizes */
+
+:root{
+    --text: #0d0d0d;
+    --highlight: #007bff;
+    --bg: #fff;
+    --button-bg-light: #6610f2; /* indigo for light and 007bff for dark */
+    --button-bg-dark: #007bff;
+    --button-active: #3700b3;
+    --button-hover: #520dc2;
+}
+.navbar {
+    /* stretch to full width */
+    /* stays at the top */
+    width: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+.navbar .left-side {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    overflow: hidden;
+    padding: 0.2rem;
+    background-color:blue;/* testing */
+}
+.navbar .left-side .east-side {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.navbar .left-side .brand-name {
+    cursor: pointer;
+}
+.navbar .left-side img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* hamburger menu - hidden on large screens */
+.navbar .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 20px;
+    cursor: pointer;
+    padding: 0.5rem;
+    border: 1px solid var(--text);
+}
+
+.hamburger .line {
+    height: 3px;
+   
+    border-radius: 2px;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root{
+        --text: #f1f1f1;
+        --highlight: #4dabf7;
+        --bg: #121212;
+        --button-bg-light: #007bff; /* indigo for light and 007bff for dark */
+        --button-bg-dark: #4dabf7;
+        --button-active: #0056b3;
+        --button-hover: #339af0;
+    }
+    .navbar {
+        background-color: transparent;
+        box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+    }
+    .navbar .hamburger {
+        border: 1px solid var(--text);
+    }
+    .hamburger .line {
+        background-color: var(--text);
+    }
+}

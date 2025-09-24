@@ -1,0 +1,20 @@
+/* App.css */
+
+/* Root container */
+.App {
+  min-height: 100vh;
+
+  font-family: system-ui, sans-serif;
+}
+
+
+
+/* 🌙 Dark mode */
+@media (prefers-color-scheme: dark) {
+  .App {
+    background: #0d0d0d;
+    color: #f1f1f1;
+  }
+
+  
+}

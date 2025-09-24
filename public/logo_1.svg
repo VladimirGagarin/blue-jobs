@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" width="900" height="300" role="img" aria-label="Bluejobs logo">
+  <!-- Scaled-down group for pin + check + smile -->
+  <g transform="translate(40,30) scale(0.6)">
+    <!-- Pin (teardrop shape) -->
+    <path
+      d="M140 40
+         C200 40 250 90 250 150
+         C250 210 200 260 140 310
+         C80 260 30 210 30 150
+         C30 90 80 40 140 40 Z"
+      fill="#1E90FF" />
+
+    <!-- White check mark -->
+    <path d="M100 150 L135 185 L195 120"
+          fill="none"
+          stroke="#FFFFFF"
+          stroke-width="18"
+          stroke-linecap="round"
+          stroke-linejoin="round" />
+
+    <!-- White smile -->
+    <path d="M110 210 C140 235 160 235 190 210"
+          fill="none"
+          stroke="#FFFFFF"
+          stroke-width="14"
+          stroke-linecap="round"
+          stroke-linejoin="round" />
+  </g>
+
+  <!-- Wordmark -->
+  <text x="280" y="160"
+        font-family="Inter, 'Helvetica Neue', Arial, sans-serif"
+        font-weight="700"
+        font-size="110"
+        fill="#142b5b">Bluejobs</text>
+</svg>

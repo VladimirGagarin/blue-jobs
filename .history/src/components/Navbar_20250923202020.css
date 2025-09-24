@@ -1,0 +1,17 @@
+/* Navbar.css */
+/* DArk and  light mode styles for Navbar component */
+/* Light mode (default) */
+/* all screen sizes */
+.navbar {
+    /* stretch to full width */
+    /* stays at the top */
+    width: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
