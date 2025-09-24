@@ -1,0 +1,71 @@
+/* App.css */
+
+/* 🌞 Light mode (default) */
+.hero-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fdfdfd;
+  color: #222;
+  text-align: center;
+  padding: 2rem;
+  width:100%;
+}
+.header
+
+.header img {
+  width: 120px;
+  margin: 1rem 0;
+}
+
+.hero-actions {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.hero-actions button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero-actions button:first-child {
+  background: #007bff;
+  color: white;
+}
+
+.hero-actions button:last-child {
+  background: #28a745;
+  color: white;
+}
+
+.hero-actions button:hover {
+  opacity: 0.85;
+}
+
+/* 🌙 Dark mode */
+@media (prefers-color-scheme: dark) {
+  .hero-page {
+    background: #121212;
+    color: #f5f5f5;
+  }
+
+  .hero-actions button:first-child {
+    background: #3399ff;
+  }
+
+  .hero-actions button:last-child {
+    background: #4caf50;
+  }
+
+  .hero-actions button {
+    color: #fff;
+  }
+}

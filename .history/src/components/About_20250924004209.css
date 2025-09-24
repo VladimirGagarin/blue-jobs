@@ -1,0 +1,318 @@
+/* CSS Custom Properties for Theming */
+:root {
+  /* Light mode (default) */
+  --about-bg-color: #f8fafc;
+  --about-text-color: #334155;
+  --about-card-bg: #ffffff;
+  --about-card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --about-card-hover-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --about-border-color: #e2e8f0;
+  --about-primary-color: #2563eb;
+  --about-secondary-color: #64748b;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --about-bg-color: #0f172a;
+    --about-text-color: #e2e8f0;
+    --about-card-bg: #1e293b;
+    --about-card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    --about-card-hover-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+    --about-border-color: #334155;
+    --about-primary-color: #3b82f6;
+    --about-secondary-color: #94a3b8;
+  }
+}
+
+/* About Section Base Styles */
+.about-section {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: var(--about-bg-color);
+  color: var(--about-text-color);
+  min-height: 100vh;
+}
+
+.about-section h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--about-primary-color);
+  text-align: center;
+  margin-bottom: 2rem;
+  line-height: 1.2;
+}
+
+.about-section h3 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--about-primary-color);
+  text-align: center;
+  margin: 3rem 0 2rem 0;
+  line-height: 1.3;
+}
+
+.about-section article {
+  background: var(--about-card-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: var(--about-card-shadow);
+  border: 1px solid var(--about-border-color);
+  margin-bottom: 3rem;
+}
+
+.about-section article p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  color: var(--about-text-color);
+}
+
+.about-section article p:last-child {
+  margin-bottom: 0;
+}
+
+/* Motive Section */
+.motive-section {
+  margin-top: 3rem;
+}
+
+/* Motive Grid Container - Desktop */
+.motive-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  align-items: stretch;
+}
+
+/* Motive Card Styles */
+.motive-card {
+  background: var(--about-card-bg);
+  border-radius: 16px;
+  box-shadow: var(--about-card-shadow);
+  border: 1px solid var(--about-border-color);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.motive-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--about-card-hover-shadow);
+}
+
+/* Top Side - Image */
+.motive-card .top-side {
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.motive-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.motive-card:hover .motive-image {
+  transform: scale(1.05);
+}
+
+/* Bottom Side - Content */
+.motive-card .bottom-side {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.motive-card h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--about-primary-color);
+  margin: 0 0 1rem 0;
+  line-height: 1.4;
+}
+
+.motive-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--about-secondary-color);
+  margin: 0;
+  flex-grow: 1;
+}
+
+/* Responsive Design - Tablet */
+@media (max-width: 1024px) {
+  .about-section {
+    padding: 1.5rem;
+  }
+  
+  .motive-grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .about-section h2 {
+    font-size: 2.25rem;
+  }
+  
+  .about-section h3 {
+    font-size: 1.75rem;
+  }
+}
+
+/* Responsive Design - Mobile (Small Screens) */
+@media (max-width: 768px) {
+  .about-section {
+    padding: 1rem;
+  }
+  
+  .motive-grid-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .motive-card {
+    margin-bottom: 0;
+  }
+  
+  .about-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .about-section h3 {
+    font-size: 1.5rem;
+    margin: 2rem 0 1.5rem 0;
+  }
+  
+  .about-section article {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .about-section article p {
+    font-size: 1rem;
+  }
+  
+  .motive-card .top-side {
+    height: 180px;
+  }
+  
+  .motive-card .bottom-side {
+    padding: 1.25rem;
+  }
+  
+  .motive-card h4 {
+    font-size: 1.1rem;
+  }
+  
+  .motive-card p {
+    font-size: 0.95rem;
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+  .about-section {
+    padding: 0.75rem;
+  }
+  
+  .about-section h2 {
+    font-size: 1.75rem;
+  }
+  
+  .about-section h3 {
+    font-size: 1.25rem;
+  }
+  
+  .about-section article {
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  
+  .motive-card .top-side {
+    height: 160px;
+  }
+  
+  .motive-card .bottom-side {
+    padding: 1rem;
+  }
+  
+  .motive-card {
+    border-radius: 12px;
+  }
+}
+
+/* Animation for card entrance */
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.motive-card {
+  animation: cardEntrance 0.6s ease-out;
+}
+
+.motive-card:nth-child(2) { animation-delay: 0.1s; }
+.motive-card:nth-child(3) { animation-delay: 0.2s; }
+.motive-card:nth-child(4) { animation-delay: 0.3s; }
+.motive-card:nth-child(5) { animation-delay: 0.4s; }
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --about-border-color: #000000;
+    --about-card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.6);
+    --about-card-hover-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.8);
+  }
+  
+  .motive-card {
+    border-width: 2px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .motive-card,
+  .motive-image {
+    transition: none;
+    animation: none;
+  }
+  
+  .motive-card:hover {
+    transform: none;
+  }
+  
+  .motive-card:hover .motive-image {
+    transform: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .about-section {
+    background: white;
+    color: black;
+    padding: 0;
+  }
+  
+  .motive-card {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}

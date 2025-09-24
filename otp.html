@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BlueJobs – OTP Verification</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="bg-white shadow-sm sticky top-0 z-30">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
+      <a href="dashboard.html" class="flex items-center gap-3">
+        <img src="bluejobs-logo.jpg" alt="BlueJobs" class="w-20 md:w-20 h-10">
+        <div class="hidden sm:block">
+          <div class="text-lg font-bold">BlueJobs</div>
+          <div class="text-xs text-gray-500">Casual jobs • Kenya</div>
+        </div>
+      </a>
+    </div>
+  </header>
+
+  <!-- ================= OTP FORM ================= -->
+  <main class="flex-grow flex items-center justify-center px-4 py-12">
+    <div class="w-full max-w-md bg-white shadow-md rounded-xl p-8 text-center">
+      <h1 class="text-2xl font-bold text-indigo-700 mb-4">
+        Enter Verification Code
+      </h1>
+      <p class="text-gray-600 mb-6 text-sm">
+        We sent a 6-digit code to your email/phone.
+      </p>
+
+      <!-- OTP Inputs -->
+      <form id="otpForm" class="flex justify-between gap-2 mb-6">
+        <!-- 6 input boxes -->
+        <input type="text" maxlength="1" class="otp-box w-12 h-12 border rounded text-center text-xl focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+        <input type="text" maxlength="1" class="otp-box w-12 h-12 border rounded text-center text-xl focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+        <input type="text" maxlength="1" class="otp-box w-12 h-12 border rounded text-center text-xl focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+        <input type="text" maxlength="1" class="otp-box w-12 h-12 border rounded text-center text-xl focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+        <input type="text" maxlength="1" class="otp-box w-12 h-12 border rounded text-center text-xl focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+        <input type="text" maxlength="1" class="otp-box w-12 h-12 border rounded text-center text-xl focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+      </form>
+
+      <!-- Verify button -->
+      <button id="verifyBtn"
+        class="w-full py-3 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition">
+        Verify
+      </button>
+
+      <!-- Resend link -->
+      <div class="mt-6 text-sm text-gray-600">
+        Didn’t receive the code?
+        <button id="resendBtn" class="text-indigo-600 font-semibold hover:underline ml-1">
+          Resend
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-gray-100">
+    <div class="max-w-6xl mx-auto px-4 py-6 text-sm text-gray-600 text-center">
+      © <strong>BlueJobs</strong> 2025. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- ================= SCRIPTS ================= -->
+  <script>
+    const boxes = document.querySelectorAll('.otp-box');
+
+    boxes.forEach((box, i) => {
+      box.addEventListener('input', e => {
+        // Only allow digits
+        e.target.value = e.target.value.replace(/\D/, '');
+        if (e.target.value && i < boxes.length - 1) {
+          boxes[i + 1].focus();
+        }
+      });
+
+      box.addEventListener('keydown', e => {
+        if (e.key === 'Backspace' && !box.value && i > 0) {
+          boxes[i - 1].focus();
+        }
+      });
+    });
+
+    document.getElementById('verifyBtn').addEventListener('click', () => {
+      const code = Array.from(boxes).map(b => b.value).join('');
+      if (code.length < 6) {
+        alert('Please enter the full 6-digit code.');
+        return;
+      }
+      // Demo verification
+      alert('Code entered: ' + code + ' (demo only)');
+      window.location.href = 'dashboard.html';
+    });
+
+    document.getElementById('resendBtn').addEventListener('click', () => {
+      alert('Verification code resent (demo).');
+    });
+  </script>
+</body>
+</html>

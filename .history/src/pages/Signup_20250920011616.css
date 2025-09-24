@@ -1,0 +1,112 @@
+/* src/pages/Signup.css */
+.App {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: system-ui, sans-serif;
+}
+
+.signup-page {
+  max-width: 600px;
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--text);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.signup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.signup-header h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Style for Home button */
+.signup-header button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;            /* space between icon & text */
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  background: var(--primary-color, #007bff); /* fallback to blue */
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.signup-header button:hover {
+  background: var(--primary-hover, #0056b3);
+  transform: translateY(-2px);
+}
+
+.signup-header button:active {
+  transform: translateY(0);
+  background: var(--primary-active, #004085);
+}
+
+
+.form-group {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+  color: var(--highlight);
+}
+
+.form-group input {
+  padding: 0.6rem;
+  border: none;
+  border-bottom: 1px solid var(--text);
+  color: var(--text);
+  
+  background-color:transparent;
+}
+
+.signup-btn {
+  width: 100%;
+  padding: 0.8rem;
+  background: #007bff;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.signup-btn:hover {
+  background: #0056b3;
+}
+
+/* Light/Dark theme */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #fff;
+    --text: #0d0d0d;
+    --highlight: #007bff;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0d0d0d;
+    --text: #f0f0f0;
+    --highlight: #f5e100ef;
+  }
+}

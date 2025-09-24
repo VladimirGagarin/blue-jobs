@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BlueJobs – Sign In</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="bg-white shadow-sm sticky top-0 z-30">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
+      <a href="dashboard.html" class="flex items-center gap-3">
+        <img src="bluejobs-logo.jpg" alt="BlueJobs" class="w-20 md:w-20 h-10">
+        <div class="hidden sm:block">
+          <div class="text-lg font-bold">BlueJobs</div>
+          <div class="text-xs text-gray-500">Casual jobs • Kenya</div>
+        </div>
+      </a>
+    </div>
+  </header>
+
+  <!-- ================= AUTH FORM ================= -->
+  <main class="flex-grow flex items-center justify-center px-4 py-12">
+    <div class="w-full max-w-md bg-white shadow-md rounded-xl p-8">
+      <!-- Title -->
+      <h1 id="formTitle" class="text-2xl font-bold text-center text-indigo-700 mb-6">
+        Sign In to BlueJobs
+      </h1>
+
+      <!-- Form -->
+      <form id="authForm" class="grid gap-4">
+        <input id="authName" placeholder="Full Name"
+               class="px-4 py-2 border rounded hidden" />
+        <input id="authEmail" type="email" placeholder="Email address"
+               class="px-4 py-2 border rounded" required />
+
+        <div>
+          <input id="authPassword" type="password" placeholder="Password"
+                 class="px-4 py-2 border rounded w-full" required />
+          <!-- ✅ Forgot Password link -->
+          <div class="mt-2 text-right">
+            <a href="otp.html" class="text-sm text-indigo-600 hover:underline">
+              Forgot password?
+            </a>
+          </div>
+        </div>
+
+        <button type="submit"
+          class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition">
+          Continue
+        </button>
+      </form>
+
+      <!-- Toggle Sign Up / Sign In -->
+      <div class="mt-6 text-center">
+        <span id="toggleText">Don’t have an account?</span>
+        <button id="toggleMode"
+          class="text-indigo-600 font-semibold hover:underline ml-1">
+          Sign Up
+        </button>
+      </div>
+
+      <!-- Back to Dashboard -->
+      <div class="mt-4 text-center">
+        <a href="dashboard.html" class="text-gray-500 hover:underline text-sm">
+          &larr; Back to Dashboard
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-gray-100">
+    <div class="max-w-6xl mx-auto px-4 py-6 text-sm text-gray-600 text-center">
+      © <strong>BlueJobs</strong> 2025. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- ================= SCRIPTS ================= -->
+  <script>
+    const $ = id => document.getElementById(id);
+    const nameField = $('authName');
+    const title = $('formTitle');
+    const toggle = $('toggleMode');
+    const toggleText = $('toggleText');
+
+    let isSignUp = false;
+
+    // Toggle Sign Up / Sign In
+    toggle.addEventListener('click', () => {
+      isSignUp = !isSignUp;
+      if (isSignUp) {
+        title.textContent = 'Create Your BlueJobs Account';
+        nameField.classList.remove('hidden');
+        toggle.textContent = 'Sign In';
+        toggleText.textContent = 'Already have an account?';
+      } else {
+        title.textContent = 'Sign In to BlueJobs';
+        nameField.classList.add('hidden');
+        toggle.textContent = 'Sign Up';
+        toggleText.textContent = 'Don’t have an account?';
+      }
+    });
+
+    // Demo sign in
+    $('authForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const name = isSignUp
+        ? (nameField.value.trim() || 'User')
+        : 'User';
+      const email = $('authEmail').value.trim();
+      const pass = $('authPassword').value.trim();
+
+      if (!email || !pass) {
+        alert('Email and password are required.');
+        return;
+      }
+
+      localStorage.setItem('bluejobsUser', JSON.stringify({
+        name,
+        email,
+        signedIn: true
+      }));
+      alert(isSignUp ? 'Account created (demo)' : 'Signed in (demo)');
+      window.location.href = 'dashboard.html';
+    });
+  </script>
+</body>
+</html>

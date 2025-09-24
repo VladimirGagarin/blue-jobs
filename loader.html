@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BlueJobs Loader</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome (briefcase icon) -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    /* Make icon scale with container */
+    .loader-icon {
+      font-size: calc(var(--loader-size, 8rem) * 0.4); /* 40% of loader size */
+    }
+    .loader-ring {
+      width: var(--loader-size, 8rem);
+      height: var(--loader-size, 8rem);
+      border-width: calc(var(--loader-size, 8rem) * 0.05); /* 5% of size */
+    }
+  </style>
+</head>
+<body class="bg-white flex items-center justify-center min-h-screen">
+
+  <!-- ========= RESIZABLE LOADER ========= -->
+  <div id="bluejobsLoader"
+       style="--loader-size:8rem"
+       class="relative flex items-center justify-center">
+    <!-- Spinning ring -->
+    <div class="loader-ring absolute rounded-full border-indigo-300 border-t-indigo-600 animate-spin"></div>
+    <!-- Briefcase icon -->
+    <i class="fa-solid fa-briefcase loader-icon text-indigo-600"></i>
+  </div>
+
+  <!-- ===== OPTIONAL: RESIZE DEMO ===== -->
+  <!-- Remove this in production; just shows how changing size updates everything -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-4">
+    <button onclick="resizeLoader('6rem')"
+            class="px-3 py-1 bg-indigo-600 text-white rounded">Small</button>
+    <button onclick="resizeLoader('8rem')"
+            class="px-3 py-1 bg-indigo-600 text-white rounded">Medium</button>
+    <button onclick="resizeLoader('12rem')"
+            class="px-3 py-1 bg-indigo-600 text-white rounded">Large</button>
+  </div>
+
+  <script>
+    function resizeLoader(size) {
+      document.getElementById('bluejobsLoader').style.setProperty('--loader-size', size);
+    }
+  </script>
+
+</body>
+</html>

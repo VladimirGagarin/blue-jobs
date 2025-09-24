@@ -1,0 +1,23 @@
+/* App.css */
+
+/* Root container */
+.App {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: system-ui, sans-serif;
+}
+
+
+
+/* 🌙 Dark mode */
+@media (prefers-color-scheme: dark) {
+  .App {
+    background: #0d0d0d;
+    color: #f1f1f1;
+  }
+
+  
+}
