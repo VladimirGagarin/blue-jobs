@@ -1,58 +1,69 @@
 import "./Home.css";
-import {useUser } from "./useUser.js";
+import { useUser } from "./useUser.js";
 import { useNavigate } from "react-router-dom";
-import {useState, useEffect, useRef } from "react";
-import {userCountryOfResidence, browserCountryAbbreviations} from "./useUser.js";
+import { useState, useEffect, useRef } from "react";
+import { userCountryOfResidence, browserCountryAbbreviations } from "./useUser.js";
 import CtaVideo from "../assets/cta_video.mp4";
-import {FaPlay, FaPause, FaVolumeMute, FaVolumeUp} from "react-icons/fa";
+import { FaPlay, FaPause, FaVolumeMute, FaVolumeUp } from "react-icons/fa";
 import Logo from "../assets/logo.png";
 
-
-
 export default function HomeContent() { 
-    const {language} = useUser();
+    const { language } = useUser();
     const navigate = useNavigate();
     const [currentTermIndex, setCurrentTermIndex] = useState(0);
     const userCountry = userCountryOfResidence();
-    const countries = browserCountryAbbreviations(); // list  of countries
+    const countries = browserCountryAbbreviations();
     const { user } = useUser();
     const userId = user?.userId || "guest";
     const [isPlaying, setIsPlaying] = useState(false);
     const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-    const [isStalled, setIsStalled] = useState(false);
     const [isMuted, setIsMuted] = useState(true);
-    const [isWaiting, setIsWaiting] = useState(false);
     const videoRef = useRef(null);
 
-   
+    const fancyJobTerms = [
+    { en: "Casual Jobs", fr: "Jobs Occasionnels" },
+    { en: "Blue Jobs", fr: "Jobs Bleus" },
+    { en: "Gig Work", fr: "Travail en Gig" },
+    { en: "Hustles", fr: "Hustles" },
+    { en: "Janta", fr: "Boulot" },
+    
+    // Cool English synonyms with French translations
+    { en: "Side Gigs", fr: "Travaux Secondaires" },
+    { en: "Flex Work", fr: "Travail Flexible" },
+    { en: "Quick Hires", fr: "Emplois Rapides" },
+    { en: "Easy Money", fr: "Argent Facile" },
+    { en: "Cash Gigs", fr: "Jobs Rémunérés" },
+    
+    // Modern/Slang English with French equivalents
+    { en: "The Grind", fr: "Le Grind" },
+    { en: "Bread Making", fr: "Gagner son Pain" },
+    { en: "Coin Earners", fr: "Gagne-Pain" },
+    { en: "Quick Cash", fr: "Argent Rapide" },
+    { en: "Side Hustle", fr: "Activité Secondaire" },
+    
+    // Professional but cool terms
+    { en: "Flexi Work", fr: "Travail Flexi" },
+    { en: "On-Demand Jobs", fr: "Emplois à la Demande" },
+    { en: "Instant Work", fr: "Travail Instantané" },
+    { en: "Quick Projects", fr: "Projets Rapides" },
+    { en: "Easy Earners", fr: "Gains Faciles" },
+    
+    // Youth/Casual slang
+    { en: "The Bag", fr: "Le Magot" },
+    { en: "Paper Chasing", fr: "Chasse au Fric" },
+    { en: "Gig Life", fr: "Vie de Gig" },
+    { en: "Hustle Culture", fr: "Culture Hustle" },
+    { en: "Side Money", fr: "Argent en Plus" },
+    
+    // French-specific slang
+    { en: "Small Jobs", fr: "Petits Boulots" },
+    { en: "Extra Cash", fr: "Argent Extra" },
+    { en: "Weekend Work", fr: "Travail Weekend" },
+    { en: "Quick Tasks", fr: "Tâches Rapides" },
+    { en: "Easy Work", fr: "Travail Facile" }
+];
 
-   const fancyJobTerms = [
-     "Casual Jobs",
-     "Blue Jobs",
-     "Gig Work",
-     "Hustles",
-     "Janta", // Swahili slang for work
-     "Boulot", // French slang for work
-     "Chamba", // Hindi slang for work
-     "Ise", // Yoruba (Nigeria) = work
-     "Orụ", // Igbo (Nigeria) = work
-     "Kazi", // Swahili (East Africa) = work
-     "Obulamu", // Luganda (Uganda) slang, but more often means 'life'
-     "Shum", // Amharic (Ethiopia) = job/work
-     "Hojii", // Oromo (Ethiopia) = work
-     "Umsebenzi", // Zulu/Xhosa (South Africa) = work
-     "Mosala", // Sotho/Tswana (Southern Africa) = work
-     "Misebenzi", // Nguni (South Africa) plural = jobs
-     "Talato", // Hausa (Nigeria/Niger) word for labor
-     "Jobo", // Nigerian slang for job/work
-     "Handiwork", // West African Pidgin slang for hustle/work
-     "Shughl", // Arabic = work
-     "Mosala", // Lingala (Congo) = work
-     "Akazi", // Kinyarwanda (Rwanda) = work
-   ];
-   
-   
-    // on mount, reset term index to 0 and every 3 seconds, increment term index
+    // Text rotation effect
     useEffect(() => {
         setCurrentTermIndex(0);
         const interval = setInterval(() => {
@@ -61,140 +72,161 @@ export default function HomeContent() {
         return () => clearInterval(interval);
     }, [fancyJobTerms.length]);
 
-    //  on mount remove video listeners
+    // Video event handlers - SINGLE useEffect for all event listeners
     useEffect(() => {
-        if (videoRef && videoRef.current) {
-            videoRef.current.addEventListener("ended", () => setIsPlaying(false));
-            videoRef.current.addEventListener("pause", () => setIsPlaying(false));
-            videoRef.current.addEventListener("play", () => setIsPlaying(true));
-        }
+        const video = videoRef.current;
+        if (!video) return;
 
-        return () => {
-            if (videoRef && videoRef.current) {
-                videoRef.current.pause();
-                videoRef.current.src = "";
-            }
+        const handleLoadedData = () => {
+            console.log("Video loaded");
+            setIsVideoLoaded(true);
         };
-    }, []);
-    // whenever isMuted changes, update videoRef current muted property
-    useEffect(() => {
-        if (videoRef && videoRef.current) {
-            videoRef.current.muted = isMuted;   
-        }
-    }, [isMuted]);
 
-    // when video plays,stalled or waiting, set isPlaying, isStalled and isWaiting states
-    useEffect(() => {
-        if (videoRef && videoRef.current) {
-            if (isPlaying) {
-                videoRef.current.play();
-            } else {
-                videoRef.current.pause();
-            }
-            if (isStalled) {
-                videoRef.current.pause();
-                setIsPlaying(false);
-            }
-            if (isWaiting) {
-                videoRef.current.pause();
-                setIsPlaying(false);
-            }
-        }
-    }, [isPlaying, isStalled, isWaiting]);
-
-    // checking stalled and waiting states
-    useEffect(() => {
-        if (isStalled || isWaiting) {
+        const handleWaiting = () => {
+            console.log("Video waiting/buffering");
             setIsPlaying(false);
-        } else {
+        };
+
+        const handlePlaying = () => {
+            console.log("Video playing");
             setIsPlaying(true);
-        }
+        };
 
+        const handlePause = () => {
+            console.log("Video paused");
+            setIsPlaying(false);
+        };
 
-        if(videoRef && videoRef.current){
-            if(isPlaying){
-                videoRef.current.play();
-            } else {
-                videoRef.current.pause();
-            }
-        }
-    }, [isPlaying, isStalled, isWaiting]);
+        const handleEnded = () => {
+            console.log("Video ended");
+            setIsPlaying(false);
+            // Optional: Loop the video
+            video.currentTime = 0;
+            video.play().catch(console.error);
+        };
 
-    // videoRef eventListeners for loadeddata, waiting, playing, stalled
-    useEffect(() => {
-         const video = videoRef.current;
-        if (video) {
+        const handleError = (e) => {
+            console.error("Video error:", e);
+            setIsVideoLoaded(false);
+        };
 
-            video.addEventListener("loadeddata", () => setIsVideoLoaded(true));
-            video.addEventListener("waiting", () => setIsWaiting(true));
-            video.addEventListener("playing", () => setIsPlaying(true));
-            video.addEventListener("stalled", () => setIsStalled(true));
-        }
+        // Add event listeners
+        video.addEventListener('loadeddata', handleLoadedData);
+        video.addEventListener('waiting', handleWaiting);
+        video.addEventListener('playing', handlePlaying);
+        video.addEventListener('pause', handlePause);
+        video.addEventListener('ended', handleEnded);
+        video.addEventListener('error', handleError);
 
+        // Set initial muted state
+        video.muted = isMuted;
+
+        // Cleanup function
         return () => {
             if (video) {
+                video.removeEventListener('loadeddata', handleLoadedData);
+                video.removeEventListener('waiting', handleWaiting);
+                video.removeEventListener('playing', handlePlaying);
+                video.removeEventListener('pause', handlePause);
+                video.removeEventListener('ended', handleEnded);
+                video.removeEventListener('error', handleError);
+                
+                // Only pause, don't clear src to avoid reloading
                 video.pause();
-                video.removeEventListener("loadeddata", () => setIsVideoLoaded(true));
-                video.removeEventListener("waiting", () => setIsWaiting(true));
-                video.removeEventListener("playing", () => setIsPlaying(true));
-                video.removeEventListener("stalled", () => setIsStalled(true));
             }
         };
-    }, []);
+    }, [isMuted]); // Only depend on isMuted
 
-    // briefing text in english and french
+    // Toggle play/pause
+    const togglePlay = async () => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        try {
+            if (isPlaying) {
+                video.pause();
+            } else {
+                await video.play();
+            }
+        } catch (error) {
+            console.error("Video play error:", error);
+        }
+    };
+
+    // Toggle mute
+    const toggleMute = () => {
+        const video = videoRef.current;
+        if (video) {
+            video.muted = !video.muted;
+            setIsMuted(video.muted);
+        }
+    };
+
+    // Optimized video attributes
+    const videoAttributes = {
+        ref: videoRef,
+        src: CtaVideo,
+        poster: Logo,
+        muted: isMuted,
+        preload: "metadata", // Only load metadata initially
+        playsInline: true, // Important for mobile
+        loop: true, // Loop the video
+        className: "cta-video"
+    };
 
     const briefing = {
         en: "Discover a world of opportunities with Blue Jobs. Whether you're looking for casual gigs, part-time work, or full-time employment, our platform connects you with verified job listings tailored to your skills and preferences. Join our community of job seekers and employers today and take the next step in your career journey.",
         fr: "Découvrez un monde d'opportunités avec Blue Jobs. Que vous recherchiez des emplois occasionnels, à temps partiel ou à temps plein, notre plateforme vous connecte à des offres d'emploi vérifiées adaptées à vos compétences et préférences. Rejoignez notre communauté de chercheurs d'emploi et d'employeurs dès aujourd'hui et faites le prochain pas dans votre parcours professionnel."
-    }
+    };
+
     const taglineQuestion = {
-        en: "Need a job? Or hunting for awesome people to hire? Relax, we’ve got your back (and your front)! 😎",
-        fr: "Besoin d’un job ? Ou tu cherches des gens cool à embaucher ? Tranquille, on gère tout ça pour toi ! 😎"
-    }
-    
-   return (
-     <div className="home-section">
-       <div className="left-side-cta-content">
-         <h1 className="title">
-           {language === "it" ? "Trouver ,": "Find ,"}
-           <span className="highlight">{fancyJobTerms[currentTermIndex]}</span>
-           {language === "fr" ? " dans " : " in "}{" "}
-           {countries.find((c) => c.abb === userCountry)?.name || "Kenya"} — {language === "fr" ? " rapide, vérifié, fiable" : " fast, verified, reliable"}
-               </h1>
-            <p className="briefing">{briefing[language] || briefing["en"]}</p>
+        en: "Need a job? Or hunting for awesome people to hire? Relax, we've got your back (and your front)! 😎",
+        fr: "Besoin d'un job ? Ou tu cherches des gens cool à embaucher ? Tranquille, on gère tout ça pour toi ! 😎"
+    };
 
-            <div className="ctas-home">
-               <button onClick={() => navigate(`/job?type=get&userId=${userId}`)}>{language === "fr" ? "Rechercher un emploi" : "Looking for a job"}</button>
-               <button onClick={() => navigate(`/job?type=post&userId=${userId}`)}>{language === "fr" ? "Publier une offre" : "Post a job"}</button>
+    return (
+        <div className="home-section">
+            <div className="left-side-cta-content">
+                <h1 className="title">
+                    {language === "fr" ? "Trouver ," : "Find ,"}
+                     <span className="highlight">
+                        {language === "fr" ? fancyJobTerms[currentTermIndex].fr : fancyJobTerms[currentTermIndex].en}
+                    </span>
+                    {language === "fr" ? " dans " : " in "}{" "}
+                    {countries.find((c) => c.abb === userCountry)?.name || "Kenya"} — {language === "fr" ? " rapide, vérifié, fiable" : " fast, verified, reliable"}
+                </h1>
+                <p className="briefing">{briefing[language] || briefing["en"]}</p>
+
+                <div className="ctas-home">
+                    <button onClick={() => navigate(`/job?type=get&userId=${userId}`)}>
+                        {language === "fr" ? "Rechercher un emploi" : "Looking for a job"}
+                    </button>
+                    <button onClick={() => navigate(`/job?type=post&userId=${userId}`)}>
+                        {language === "fr" ? "Publier une offre" : "Post a job"}
+                    </button>
+                </div>
             </div>
-       </div>
-       <div className="right-side-cta-content">
-               <video src={CtaVideo} poster={Logo} ref={videoRef} onLoadedData={() => setIsVideoLoaded(true)} onWaiting={() => setIsWaiting(true)} onPlaying={() => setIsPlaying(true)} onStalled={() => setIsStalled(true)} muted={isMuted} />
-               {!isVideoLoaded && <div className="video-placeholder">{language === "fr" ? "Chargement de la vidéo..." : "Loading video..."}</div>}
-               {(isWaiting || isStalled) && isVideoLoaded && <div className="video-placeholder">{language === "fr" ? "Chargement de la vidéo..." : "Loading video..."}</div>}
-               {CtaVideo && isVideoLoaded && (
-                <div className="video-controls">
-                    <button onClick={() => {
-                        if (isPlaying) {
-                            videoRef.current.pause();
-                            setIsPlaying(false);
-                        } else {
-                            videoRef.current.play();
-                            setIsPlaying(true);
-                        }
-                    }}>
-                        {isPlaying ? <FaPause /> : <FaPlay />}
-                    </button>
-                    <button onClick={() => {
-                        setIsMuted((prev) => !prev);
-                    }}>
-                        {isMuted ? <FaVolumeMute /> : <FaVolumeUp />}
-                    </button>
-                   </div>
-               )}
-           </div>
-     </div>
-   );
-
+            
+            <div className="right-side-cta-content">
+                <video {...videoAttributes} />
+                
+                {!isVideoLoaded && (
+                    <div className="video-placeholder">
+                        {language === "fr" ? "Chargement de la vidéo..." : "Loading video..."}
+                    </div>
+                )}
+                
+                {isVideoLoaded && (
+                    <div className="video-controls">
+                        <button onClick={togglePlay} aria-label={isPlaying ? "Pause" : "Play"} title={isPlaying ? "Pause" : "Play"}>
+                            {isPlaying ? <FaPause /> : <FaPlay />}
+                        </button>
+                        <button onClick={toggleMute} aria-label={isMuted ? "Unmute" : "Mute"}>
+                            {isMuted ? <FaVolumeMute /> : <FaVolumeUp />}
+                        </button>
+                    </div>
+                )}
+            </div>
+        </div>
+    );
 }

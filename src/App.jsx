@@ -17,7 +17,7 @@ function App() {
    const [userIsGuest, setUserIsGuest] = useState(true);
    const navigate  = useNavigate();
   const [countryOfResidence, setCountry] = useState(null);
-  const { language, currentLanguage } = useLanguage();
+  const { language, setLanguage } = useLanguage();
   const location = useLocation();
   const [currentPanel, setCurrentPanel] = useState("home");
 
@@ -46,14 +46,14 @@ function App() {
     const frenchSpeakingCountries = ['FR', 'BE', 'CH', 'CA', 'SN', 'CI', 'ML', 'BF', 'NE', 'TD', 'CM', 'GA', 'CG', 'CD', 'BJ', 'TG'];
     if (countryOfResidence && frenchSpeakingCountries.includes(countryOfResidence)) {
       if (language !== 'fr') {
-        currentLanguage('fr');
+        setLanguage('fr');
       }
     } else {
       if (language !== 'en') {
-        currentLanguage('en');
+        setLanguage('en');
       }
     }
-  }, [countryOfResidence, language, currentLanguage]);
+  }, [countryOfResidence, language, setLanguage]);
 
      useEffect(() => {
       const handleLoad = () => {

@@ -3,7 +3,7 @@ import { useLanguage } from "./useUser";
 import { useState } from "react";
 
 const Footer = () => {
-  const { language, currentLanguage } = useLanguage();
+  const { language, setLanguage } = useLanguage();
   const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
   const currentYear = new Date().getFullYear();
 
@@ -13,7 +13,7 @@ const Footer = () => {
   ];
 
   const handleLanguageChange = (langCode) => {
-    currentLanguage(langCode);
+    setLanguage(langCode);
     setShowLanguageDropdown(false);
   };
 
