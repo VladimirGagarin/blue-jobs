@@ -1,0 +1,294 @@
+/* Guest.css */
+:root {
+    --guest-bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --guest-card-bg: rgba(255, 255, 255, 0.95);
+    --guest-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    --guest-border-radius: 20px;
+    --primary-accent: #4f46e5;
+    --secondary-accent: #10b981;
+    --accent-color: #f59e0b;
+}
+
+.guest-page {
+    min-height: 100vh;
+    background: var(--guest-bg-gradient);
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+}
+
+.guest-page-header {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.guest-page-logo {
+    height: 60px;
+    width: auto;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.logo-text h1 {
+    margin: 0;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.logo-text p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+}
+
+.guest-page-content {
+    flex: 1;
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.welcome-section {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.welcome-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.tip-container {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.animated-tip {
+    font-size: 1.4rem;
+    color: white;
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tip-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.tip-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+}
+
+.tip-dot.active {
+    background: white;
+    transform: scale(1.2);
+}
+
+.welcome-description {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.action-section {
+    background: var(--guest-card-bg);
+    border-radius: var(--guest-border-radius);
+    padding: 3rem;
+    box-shadow: var(--guest-shadow);
+}
+
+.action-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+.guest-page-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.guest-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.guest-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.guest-card-primary:hover {
+    border-color: var(--primary-accent);
+}
+
+.guest-card-secondary:hover {
+    border-color: var(--secondary-accent);
+}
+
+.guest-card-accent:hover {
+    border-color: var(--accent-color);
+}
+
+.card-icon-container {
+    padding: 1rem;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.guest-card-icon {
+    width: 40px;
+    height: 40px;
+    filter: brightness(0) invert(1);
+}
+
+.card-content {
+    flex: 1;
+}
+
+.guest-card-text {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.guest-card-subtitle {
+    display: block;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.card-arrow {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #999;
+    transition: transform 0.3s ease;
+}
+
+.guest-card:hover .card-arrow {
+    transform: translateX(5px);
+    color: var(--primary-accent);
+}
+
+.guest-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-accent);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .guest-page-content {
+        padding: 2rem 1rem;
+    }
+    
+    .welcome-title {
+        font-size: 2.5rem;
+    }
+    
+    .animated-tip {
+        font-size: 1.1rem;
+    }
+    
+    .guest-page-buttons {
+        grid-template-columns: 1fr;
+    }
+    
+    .guest-stats {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .logo-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-title {
+        font-size: 2rem;
+    }
+    
+    .action-section {
+        padding: 2rem 1rem;
+    }
+    
+    .guest-card {
+        padding: 1.5rem;
+    }
+}
