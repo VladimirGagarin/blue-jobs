@@ -170,9 +170,9 @@ function App() {
         <LoadingPage
           message={
             language === "fr"
-              ? `Bienvenue sur  | ${
+              ? `Bienvenue sur Blue Jobs | ${
                   panelDisplayNames[currentPanel]?.fr || "Accueil"
-                } | Blue Jobs`
+                } `
               : `Welcome to  | ${
                   panelDisplayNames[currentPanel]?.en || "Home"
                 } | Blue Jobs`

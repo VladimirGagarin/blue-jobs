@@ -134,9 +134,7 @@ function App() {
     return () => window.removeEventListener("load", handleLoad);
   }, []);
 
-  useEffect(() => {
-    setUserIsGuest(user.userId === "guest");
-  }, [user]);
+ 
 
   useEffect(() => {
     const userLocation = async () => {

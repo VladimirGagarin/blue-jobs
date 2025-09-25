@@ -9,7 +9,7 @@ import AboutContent from './components/About.jsx';
 import HomeContent from "./components/HomeScreen.jsx";
 import Footer from './components/footer';
 import FeatureContent from "./components/Features.jsx";
-import FoundersContent from "./components/Founders.jsx";
+import FoundersContent from "./components/"
 
 import './App.css'
 
@@ -31,7 +31,7 @@ function App() {
     about: <AboutContent />,
     features: <FeatureContent/>,
     reviews: <div>Reviews Content</div>,
-    founders: <FoundersContent/>,
+    founders: <div>Founders Content</div>,
     "public_jobs": <div>Public Jobs </div>,
   };
   // on mount, check current panel from URL
@@ -170,12 +170,12 @@ function App() {
         <LoadingPage
           message={
             language === "fr"
-              ? `Bienvenue sur  | ${
+              ? `Bienvenue sur Blue Jobs | ${
                   panelDisplayNames[currentPanel]?.fr || "Accueil"
-                } | Blue Jobs`
-              : `Welcome to  | ${
+                }`
+              : `Welcome to Blue Jobs | ${
                   panelDisplayNames[currentPanel]?.en || "Home"
-                } | Blue Jobs`
+                }`
           }
         />
       ) : (

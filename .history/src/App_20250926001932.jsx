@@ -16,7 +16,7 @@ import './App.css'
 function App() {
   const [loading, setLoading] = useState(true);
   const { user } = useUser();
-  const [userIsGuest, setUserIsGuest] = useState(true);
+  //const [userIsGuest, setUserIsGuest] = useState(true);
   const navigate = useNavigate();
   const [countryOfResidence, setCountry] = useState(null);
   const { language, setLanguage } = useLanguage();
@@ -134,9 +134,9 @@ function App() {
     return () => window.removeEventListener("load", handleLoad);
   }, []);
 
-  useEffect(() => {
-    setUserIsGuest(user.userId === "guest");
-  }, [user]);
+  // useEffect(() => {
+  //   setUserIsGuest(user.userId === "guest");
+  // }, [user]);
 
   useEffect(() => {
     const userLocation = async () => {
