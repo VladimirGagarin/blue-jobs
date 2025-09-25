@@ -8,6 +8,7 @@ import Navbar from './components/Navbar.jsx';
 import AboutContent from './components/About.jsx';
 import HomeContent from "./components/HomeScreen.jsx";
 import Footer from './components/footer';
+import FeatureContent from "./components/Features.jsx";
 
 import './App.css'
 
@@ -27,9 +28,10 @@ function App() {
   const contentPanels = {
     home: <HomeContent />,
     about: <AboutContent />,
-    features: <div>Features Content</div>,
+    features: <FeatureContent/>,
     reviews: <div>Reviews Content</div>,
     founders: <div>Founders Content</div>,
+    "public_jobs": <div>Public Jobs </div>,
   };
   // on mount, check current panel from URL
   useEffect(() => {

@@ -16,7 +16,7 @@
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
   :root {
-    --nav-bg-color: #1a1a1a;
+    --nav-bg-color: #0f172a;
     --nav-text-color: #ffffff;
     --nav-border-color: #333333;
     --nav-hover-bg: #2d2d2d;
@@ -190,7 +190,7 @@
   transform: translateX(-50%);
   width: 80%;
   height: 2px;
-  background-color: var(--active-color);
+  background-color: var(--hamburger-color);
   border-radius: 1px;
 }
 
@@ -250,6 +250,9 @@
 
   .brand-name p {
     font-size: 0.8rem;
+  }
+   .nav-links-container li.active::after {
+    content: none; /* removes the pseudo-element */
   }
 }
 

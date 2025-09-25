@@ -11,6 +11,7 @@ export const mockUsers =[
     userIsPremium: false,
     userJobPostPermit: true,
     userApplyPermit: true,
+    userVerified: false,
 
     userPostedJobs: ["bj_101A", "bj_102D"],
     userAppliedJobs: ["bj_150E", "bj_151H"],
@@ -22,6 +23,7 @@ export const mockUsers =[
     userPassportPhoto: "https://bluejobs.com/uploads/u12345.jpg",
     userPassword: "!LoveCoding2025",
     userRole: "basic",
+    userReview:[]
   },
   {
     userId: "u12346",

@@ -69,3 +69,10 @@
   75%  { border-top-color: #1B9A59; }
   100% { border-top-color: #4285F4; }
 }
+
+/* Responsive adjustments */
+/* @media (max-width: 768px)  {
+  .logo {
+    height: 250px;
+  }
+} */
