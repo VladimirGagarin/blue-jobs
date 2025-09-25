@@ -11,8 +11,8 @@
 }
 
 .spinner {
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   border: 6px solid #ccc;
   border-top: 6px solid #4285F4;
   border-radius: 50%;
@@ -20,8 +20,8 @@
 }
 
 .logo {
-  max-width: 250px; /* Smaller to fit inside spinner */
-  max-height: 250px; /* Adjusted proportion */
+  width: 250px; /* Smaller to fit inside spinner */
+  height: 250px; /* Adjusted proportion */
   position: absolute;
   z-index: 2;
 }
@@ -41,13 +41,13 @@
 @media (max-width: 768px) {
   .spinner {
     width: 160px;
-    height: 160px;
+    height: 120px;
     border-width: 5px;
   }
   
   .logo {
-    min-width: 100px;
-    min-height: 100px;
+    width: 120px;
+    height: 120px;
   }
   
   .loading-message {
