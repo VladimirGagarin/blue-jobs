@@ -1,0 +1,1 @@
+export const createNotification = (type, priority, content, cause = "") => {
