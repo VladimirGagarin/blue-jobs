@@ -103,7 +103,7 @@ export default function Login() {
         // Force re-animation by changing the key
         setKey((prev) => prev + 1);
       }, 50);
-    }, 10000);
+    }, 8000);
 
     return () => clearInterval(interval);
   }, [videoError]);
@@ -275,7 +275,6 @@ export default function Login() {
                 </video>
               ) : (
                 <img
-                  key={`${currentImageIndex}-${slideDirection}`} // Force re-render
                   src={officeImages[currentImageIndex]}
                   alt="Login Visual"
                   className={`media-content slide-image slide-${slideDirection}`}

@@ -44,15 +44,15 @@ export default function Login() {
   const [videoError, setVideoError] = useState(false);
 
   // Simple slideshow state
-  // Slideshow states
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [slideDirection, setSlideDirection] = useState("right");
-  const [key, setKey] = useState(0); // Key to force re-animation
 
   const { login } = useUser();
   const { language, setLanguage } = useLanguage();
   const navigate = useNavigate();
-  const hasAutoDetectLanguage = useRef(false); // In your component, add direction state
+  const hasAutoDetectLanguage = useRef(false);// In your component, add direction state
+const [slideDirection, setSlideDirection] = useState('right');
+
+
 
   // Set document title based on language
   useEffect(() => {
@@ -87,26 +87,20 @@ export default function Login() {
   }, [language, setLanguage]);
 
   // Simple slideshow effect - changes image every 5 seconds
-  // Slideshow effect with proper animation triggering
-  useEffect(() => {
-    if (!videoError) return;
+  // Update the slideshow effect
+useEffect(() => {
+  if (!videoError) return;
 
-    const interval = setInterval(() => {
-      // Change direction first
-      setSlideDirection((prev) => (prev === "right" ? "left" : "right"));
+  const interval = setInterval(() => {
+    setSlideDirection(prev => prev === 'right' ? 'left' : 'right');
+    setCurrentImageIndex((prev) => 
+      prev === officeImages.length - 1 ? 0 : prev + 1
+    );
+  }, 5000);
 
-      // Then change image after a tiny delay to ensure animation
-      setTimeout(() => {
-        setCurrentImageIndex((prev) =>
-          prev === officeImages.length - 1 ? 0 : prev + 1
-        );
-        // Force re-animation by changing the key
-        setKey((prev) => prev + 1);
-      }, 50);
-    }, 10000);
+  return () => clearInterval(interval);
+}, [videoError]);
 
-    return () => clearInterval(interval);
-  }, [videoError]);
 
   // Text content based on language
   const content = {
@@ -275,10 +269,9 @@ export default function Login() {
                 </video>
               ) : (
                 <img
-                  key={`${currentImageIndex}-${slideDirection}`} // Force re-render
                   src={officeImages[currentImageIndex]}
                   alt="Login Visual"
-                  className={`media-content slide-image slide-${slideDirection}`}
+                   className={`media-content slide-image slide-${slideDirection}`}
                 />
               )}
               <div className="media-overlay"></div>

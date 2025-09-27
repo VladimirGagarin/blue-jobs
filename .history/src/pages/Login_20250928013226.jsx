@@ -103,7 +103,7 @@ export default function Login() {
         // Force re-animation by changing the key
         setKey((prev) => prev + 1);
       }, 50);
-    }, 10000);
+    }, 1000);
 
     return () => clearInterval(interval);
   }, [videoError]);

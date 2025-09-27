@@ -20,16 +20,12 @@ import OfficeLogo4 from "../assets/office_006.jpg";
 import OfficeLogo5 from "../assets/office_007.jpg";
 import OfficeLogo6 from "../assets/office_002.jpg";
 
+
+
 const backgroundVideo =
   "https://assets.mixkit.co/videos/preview/mixkit-abstract-blue-and-purple-flow-4936-large.mp4";
-const officeImages = [
-  OfficeLogo1,
-  OfficeLogo2,
-  OfficeLogo3,
-  OfficeLogo4,
-  OfficeLogo5,
-  OfficeLogo6,
-];
+const backgroundImage = OfficeLogo4;
+
 
 export default function Login() {
   const [formData, setFormData] = useState({
@@ -43,18 +39,16 @@ export default function Login() {
   const [error, setError] = useState("");
   const [videoError, setVideoError] = useState(false);
 
-  // Simple slideshow state
-  // Slideshow states
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [slideDirection, setSlideDirection] = useState("right");
-  const [key, setKey] = useState(0); // Key to force re-animation
-
   const { login } = useUser();
   const { language, setLanguage } = useLanguage();
   const navigate = useNavigate();
-  const hasAutoDetectLanguage = useRef(false); // In your component, add direction state
+  const hasAutoDetectLanguage = useRef(false);
 
   // Set document title based on language
+  useEffect(() => {
+    document.title =
+      language === "fr" ? "Connexion | Blue Jobs" : "Login | Blue Jobs";
+  }, [language]); // Set document title based on language
   useEffect(() => {
     document.title =
       language === "fr" ? "Connexion | Blue Jobs" : "Login | Blue Jobs";
@@ -65,7 +59,9 @@ export default function Login() {
     if (hasAutoDetectLanguage.current) return;
 
     const initializeLanguage = () => {
+      // Check localStorage first
       const savedLanguage = localStorage.getItem("preferredLanguage");
+
       if (savedLanguage === "fr" || savedLanguage === "en") {
         if (language !== savedLanguage) {
           setLanguage(savedLanguage);
@@ -74,6 +70,7 @@ export default function Login() {
         return;
       }
 
+      // Fallback to browser language detection
       const browserLanguage = navigator.language?.split("-")[0];
       const finalLanguage = browserLanguage === "fr" ? "fr" : "en";
 
@@ -81,32 +78,12 @@ export default function Login() {
         setLanguage(finalLanguage);
         localStorage.setItem("preferredLanguage", finalLanguage);
       }
+
       hasAutoDetectLanguage.current = true;
     };
+
     initializeLanguage();
   }, [language, setLanguage]);
-
-  // Simple slideshow effect - changes image every 5 seconds
-  // Slideshow effect with proper animation triggering
-  useEffect(() => {
-    if (!videoError) return;
-
-    const interval = setInterval(() => {
-      // Change direction first
-      setSlideDirection((prev) => (prev === "right" ? "left" : "right"));
-
-      // Then change image after a tiny delay to ensure animation
-      setTimeout(() => {
-        setCurrentImageIndex((prev) =>
-          prev === officeImages.length - 1 ? 0 : prev + 1
-        );
-        // Force re-animation by changing the key
-        setKey((prev) => prev + 1);
-      }, 50);
-    }, 10000);
-
-    return () => clearInterval(interval);
-  }, [videoError]);
 
   // Text content based on language
   const content = {
@@ -146,6 +123,7 @@ export default function Login() {
       ...prev,
       [name]: value,
     }));
+    // Clear error when user starts typing
     if (error) setError("");
   };
 
@@ -154,6 +132,7 @@ export default function Login() {
     setLoading(true);
     setError("");
 
+    // Basic validation
     if (!formData.email && !formData.phone) {
       setError(
         language === "fr"
@@ -175,8 +154,10 @@ export default function Login() {
     }
 
     try {
+      // Simulate API call - replace with actual authentication
       await new Promise((resolve) => setTimeout(resolve, 1500));
 
+      // Mock authentication - replace with real API call
       const mockUser = {
         userId: "u98765",
         userName: "Jane Doe",
@@ -236,7 +217,7 @@ export default function Login() {
           <FaHome size={20} />
         </button>
 
-        {/* Background with mist effect - KEEP THIS FOR BACKGROUND ONLY */}
+        {/* Background with mist effect */}
         <div className="login-background">
           {!videoError ? (
             <video
@@ -251,7 +232,7 @@ export default function Login() {
             </video>
           ) : (
             <img
-              src={officeImages[currentImageIndex]}
+              src={backgroundImage}
               alt="Background"
               className="background-media"
             />
@@ -259,7 +240,7 @@ export default function Login() {
         </div>
 
         <div className="login-content">
-          {/* Media Section - THIS IS WHERE THE VISIBLE IMAGE/VIDEO GOES */}
+          {/* Media Section */}
           <div className="login-media">
             <div className="media-container">
               {!videoError ? (
@@ -275,10 +256,9 @@ export default function Login() {
                 </video>
               ) : (
                 <img
-                  key={`${currentImageIndex}-${slideDirection}`} // Force re-render
-                  src={officeImages[currentImageIndex]}
+                  src={backgroundImage}
                   alt="Login Visual"
-                  className={`media-content slide-image slide-${slideDirection}`}
+                  className="media-content"
                 />
               )}
               <div className="media-overlay"></div>
