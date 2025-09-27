@@ -5,7 +5,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useLanguage } from "./useUser.js";
 import { browserCountryAbbreviations, userCountryOfResidence } from "./useUser.js";
 import { useEffect, useState } from "react";
-import { FaHome, FaInfoCircle, FaStar, FaComments, FaUsers, FaBell } from "react-icons/fa";
+import { FaHome, FaInfoCircle, FaStar, FaComments, FaUsers } from "react-icons/fa";
 
 const Navbar = () => {
   const { user} = useUser();
@@ -68,7 +68,7 @@ const Navbar = () => {
         { name: language === "fr" ? "Fonctionnalités" : "Features", panel: "features", navigation: "/?panel=features", icon: <FaStar /> },
         { name: language === "fr" ? "Avis" : "Reviews", panel: "reviews", navigation: "/?panel=reviews", icon: <FaComments /> },
         { name: language === "fr" ? "Fondateurs" : "Founders", panel: "founders", navigation: "/?panel=founders", icon: <FaUsers /> },
-        {name: language === "fr" ? "Notfication" : "Notification", panel:"notifications", navigation: "/?panel=notifications", icon: <FaBell/>}
+        {name: language === "fr" ? "Notficasione" : "Notification", panel:"notifications", navigation: "/notifications", icon: <FaB}
     ]
 
     return (

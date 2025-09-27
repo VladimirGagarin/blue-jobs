@@ -68,7 +68,7 @@ const Navbar = () => {
         { name: language === "fr" ? "Fonctionnalités" : "Features", panel: "features", navigation: "/?panel=features", icon: <FaStar /> },
         { name: language === "fr" ? "Avis" : "Reviews", panel: "reviews", navigation: "/?panel=reviews", icon: <FaComments /> },
         { name: language === "fr" ? "Fondateurs" : "Founders", panel: "founders", navigation: "/?panel=founders", icon: <FaUsers /> },
-        {name: language === "fr" ? "Notfication" : "Notification", panel:"notifications", navigation: "/?panel=notifications", icon: <FaBell/>}
+        {name: language === "fr" ? "Notficasione" : "Notification", panel:"notifications", navigation: "/notifications", icon: <FaBell/>}
     ]
 
     return (

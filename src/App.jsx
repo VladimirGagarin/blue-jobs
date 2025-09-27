@@ -11,6 +11,7 @@ import Footer from './components/footer';
 import FeatureContent from "./components/Features.jsx";
 import FoundersContent from "./components/Founders.jsx";
 import ReviewContent from "./components/Review.jsx";
+import NotificationComponent from "./components/Notification.jsx";
 
 import './App.css'
 
@@ -33,6 +34,7 @@ function App() {
     features: <FeatureContent/>,
     reviews: <ReviewContent/>,
     founders: <FoundersContent/>,
+    notifications:  <ReviewContent/>,
     "public_jobs": <div>Public Jobs </div>,
   };
   // on mount, check current panel from URL
@@ -163,6 +165,7 @@ function App() {
     features: { en: "Features", fr: "Fonctionnalités" },
     reviews: { en: "Reviews", fr: "Avis" },
     founders: { en: "Founders", fr: "Fondateurs" },
+    notifications: {en: "Notifications", fr: "Notifications"}
   };
 
   return (

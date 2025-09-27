@@ -80,17 +80,13 @@ export const mockUsers = [
     userEmail: "maria@email.com",
     userPhoneNumber: "+254733445566",
     userNationality: "Kenyan",
-
     userIsPremium: true,
     userJobPostPermit: false, // blocked from posting jobs
     userApplyPermit: true,
-
     userPostedJobs: [],
     userAppliedJobs: ["bj_140G"],
-
     userPostTokens: 0,
     userApplyTokens: 1,
-
     userDateCreated: "2025-09-20T08:10:00Z",
     userPassportPhoto: "https://bluejobs.com/uploads/u12348.jpg",
     userPassword: "Goretti*Faith2025",
@@ -104,36 +100,18 @@ export const mockUsers = [
     userEmail: "mary.japheth@email.com",
     userPhoneNumber: "+254744556677",
     userNationality: "Kenyan",
-
     userIsPremium: false,
     userJobPostPermit: true,
     userApplyPermit: false, // blocked from applying
-
     userPostedJobs: ["bj_160K"],
     userAppliedJobs: [],
-
     userPostTokens: 1,
     userApplyTokens: 0,
-
     userDateCreated: "2025-09-21T18:40:00Z",
     userPassportPhoto: "https://bluejobs.com/uploads/u12349.jpg",
     userPassword: "SrJaphet#2025",
     userRole: "basic",
-     userNotifications: [
-    {
-      notificationId: "notif_123456",
-      type: "Alert",
-      priority: 1, // 0 = low, 1 = medium, 2 = high
-      content: {
-        image: null,
-        text: "A user reported your review. Please check your reviews before posting them.",
-        cause: "Report",
-        link: "/policies"
-      },
-      dateCreated: "2024-01-15T10:30:00Z",
-      isRead: false
-    }
-  ],
+    userNotifications: [],
   },
   {
     // admin user

@@ -12,6 +12,7 @@ import DashboardPage from "./pages/Dashboard.jsx";
 import LoginPage from "./pages/Login.jsx";
 import NotFoundPage from "./pages/NotFound.jsx";
 import SignupPage from "./pages/Signup.jsx";
+import ProfileContent from "./pages/Profile.jsx";
 import { Consent } from "./components/consent.jsx";
 import { UserProvider } from "./contexts/UserData.jsx";
 import { LanguageProvider } from "./contexts/LanguageProvider.jsx";
@@ -26,7 +27,8 @@ const routes = [
   { path: "/login", element: <LoginPage /> },
   { path: "/signup", element: <SignupPage /> },
   { path: "*", element: <NotFoundPage /> },
-  { path: "/consent", element:<Consent/>}
+  { path: "/consent", element:<Consent/>},
+  {path: "/profile",element: <ProfileContent/>}
 ];
 
 const router =

@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { mockUsers } from "../Utils/user";
+import { NotificationTemplates, createNotification, getNotificationText } from '../Utils/Notification.js';
 
 // ✅ default guest user
 const guestUser = {
@@ -40,6 +41,8 @@ const testUser = {
 };
 
 
+
+
 const UserContext = createContext();
 
 export function UserProvider({ children }) {
@@ -60,9 +63,10 @@ export function UserProvider({ children }) {
     
     }
     else {
-      setUser(testUser);
+      setUser(guestUser);
          // Optional: Also store in localStorage to simulate real behavior
-        localStorage.setItem("bluejobs_userId", testUser.userId);
+        localStorage.setItem("bluejobs_userId", guestUser.userId);
+       
     }
   }, []);
 
@@ -74,6 +78,41 @@ export function UserProvider({ children }) {
       localStorage.removeItem("bluejobs_userId");
     }
     setUser(newUser || guestUser);
+  };
+
+   // ✅ Logout function
+  const logout = () => {
+    // Clear user data from localStorage
+    localStorage.removeItem("bluejobs_userId");
+    
+    // Reset to guest user
+    setUser(guestUser);
+    
+    // Optional: Clear any other user-related data
+    localStorage.removeItem("userSession");
+    localStorage.removeItem("authToken");
+    
+    console.log('User logged out successfully');
+  };
+
+  // ✅ Login function (for future use)
+  const login = (userData) => {
+    if (userData?.userId) {
+      localStorage.setItem("bluejobs_userId", userData.userId);
+      setUser(userData);
+      return true;
+    }
+    return false;
+  };
+
+  // ✅ Check if user is logged in
+  const isLoggedIn = () => {
+    return user.userId !== "guest" && user.userId !== null;
+  };
+
+  // ✅ Check if user is guest
+  const isGuest = () => {
+    return user.userId === "guest";
   };
 
   return (

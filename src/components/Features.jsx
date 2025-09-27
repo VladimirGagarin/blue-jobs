@@ -204,9 +204,11 @@ export default function FeatureContent() {
                   {language === "fr" ? "Bientôt disponible" : "Coming Soon"}
                 </span>
               )}
+              {!feature.comingSoon && (
               <button className="feature-button">
                 {language === "fr" ? "Explorer" : "Explore"} →
               </button>
+              )}
             </div>
           ))}
         </div>
