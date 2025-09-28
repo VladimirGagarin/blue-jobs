@@ -30,7 +30,7 @@ const routes = [
   { path: "*", element: <NotFoundPage /> },
   { path: "/consent", element:<Consent/>},
   {path: "/profile",element: <ProfileContent/>},
-  {path: "/otp", element: <OTP/>}
+  {path: "/otp/"}
 ];
 
 const router =

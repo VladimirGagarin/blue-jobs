@@ -1,0 +1,372 @@
+:root {
+  /* Light mode (default) */
+  --otp-bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --otp-bg-gradient-dark: linear-gradient(135deg, #4c63b6 0%, #5a3d8e 100%);
+  --otp-content-bg: rgba(255, 255, 255, 0.95);
+  --otp-content-bg-dark: rgba(30, 30, 40, 0.95);
+  --otp-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  --otp-shadow-dark: 0 20px 40px rgba(0, 0, 0, 0.3);
+  
+  /* Text colors */
+  --otp-text-primary: #2d3748;
+  --otp-text-primary-dark: #f7fafc;
+  --otp-text-secondary: #6b7280;
+  --otp-text-secondary-dark: #d1d5db;
+  --otp-text-light: #ffffff;
+  
+  /* Background colors */
+  --otp-bg-primary: #ffffff;
+  --otp-bg-primary-dark: #111827;
+  --otp-bg-secondary: #f8fafc;
+  --otp-bg-secondary-dark: #1f2937;
+  
+  /* Border colors */
+  --otp-border-color: #e5e7eb;
+  --otp-border-color-dark: #374151;
+  --otp-border-focus: #4f46e5;
+  --otp-border-focus-dark: #6366f1;
+  
+  /* Button colors */
+  --otp-button-primary: linear-gradient(45deg, #4f46e5, #7c3aed);
+  --otp-button-primary-dark: linear-gradient(45deg, #6366f1, #8b5cf6);
+  --otp-button-secondary: #4f46e5;
+  --otp-button-secondary-dark: #6366f1;
+  --otp-button-success: linear-gradient(45deg, #10b981, #059669);
+  --otp-button-success-dark: linear-gradient(45deg, #34d399, #10b981);
+  
+  /* Status colors */
+  --otp-error-bg: #fee2e2;
+  --otp-error-bg-dark: #7f1d1d;
+  --otp-error-text: #dc2626;
+  --otp-error-text-dark: #fecaca;
+  --otp-error-border: #dc2626;
+  --otp-error-border-dark: #ef4444;
+  
+  --otp-success-bg: #d1fae5;
+  --otp-success-bg-dark: #064e3b;
+  --otp-success-text: #065f46;
+  --otp-success-text-dark: #a7f3d0;
+  --otp-success-icon: #10b981;
+  --otp-success-icon-dark: #34d399;
+  
+  /* Contact info */
+  --otp-contact-bg: #f8fafc;
+  --otp-contact-bg-dark: #1e293b;
+  --otp-contact-border: #4f46e5;
+  --otp-contact-border-dark: #6366f1;
+}
+
+/* Dark mode preferences */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --otp-bg-gradient: var(--otp-bg-gradient-dark);
+    --otp-content-bg: var(--otp-content-bg-dark);
+    --otp-shadow: var(--otp-shadow-dark);
+    --otp-text-primary: var(--otp-text-primary-dark);
+    --otp-text-secondary: var(--otp-text-secondary-dark);
+    --otp-bg-primary: var(--otp-bg-primary-dark);
+    --otp-bg-secondary: var(--otp-bg-secondary-dark);
+    --otp-border-color: var(--otp-border-color-dark);
+    --otp-border-focus: var(--otp-border-focus-dark);
+    --otp-button-primary: var(--otp-button-primary-dark);
+    --otp-button-secondary: var(--otp-button-secondary-dark);
+    --otp-button-success: var(--otp-button-success-dark);
+    --otp-error-bg: var(--otp-error-bg-dark);
+    --otp-error-text: var(--otp-error-text-dark);
+    --otp-error-border: var(--otp-error-border-dark);
+    --otp-success-bg: var(--otp-success-bg-dark);
+    --otp-success-text: var(--otp-success-text-dark);
+    --otp-success-icon: var(--otp-success-icon-dark);
+    --otp-contact-bg: var(--otp-contact-bg-dark);
+    --otp-contact-border: var(--otp-contact-border-dark);
+  }
+}
+
+.otp-container {
+  min-height: 100vh;
+  background: var(--otp-bg-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+}
+
+.otp-back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid var(--otp-button-secondary);
+  border-radius: 25px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--otp-button-secondary);
+  font-weight: 600;
+  -web
+  backdrop-filter: blur(10px);
+}
+
+.otp-back-button:hover {
+  background: var(--otp-bg-primary);
+  transform: translateY(-2px);
+}
+
+@media (prefers-color-scheme: dark) {
+  .otp-back-button {
+    background: rgba(30, 30, 40, 0.9);
+    color: var(--otp-text-light);
+  }
+}
+
+.otp-content {
+  background: var(--otp-content-bg);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: var(--otp-shadow);
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  color: var(--otp-text-primary);
+}
+
+.otp-header {
+  margin-bottom: 30px;
+}
+
+.otp-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--otp-text-primary);
+  margin-bottom: 10px;
+}
+
+.otp-subtitle {
+  color: var(--otp-text-secondary);
+  margin-bottom: 20px;
+}
+
+.otp-contact-info {
+  background: var(--otp-contact-bg);
+  padding: 15px;
+  border-radius: 10px;
+  border-left: 4px solid var(--otp-contact-border);
+  color: var(--otp-text-primary);
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  color: var(--otp-text-secondary);
+}
+
+.otp-inputs {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.otp-input {
+  width: 50px;
+  height: 60px;
+  border: 2px solid var(--otp-border-color);
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  background: var(--otp-bg-primary);
+  color: var(--otp-text-primary);
+}
+
+.otp-input:focus {
+  border-color: var(--otp-border-focus);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+  outline: none;
+}
+
+.otp-input:disabled {
+  background-color: var(--otp-bg-secondary);
+  opacity: 0.7;
+}
+
+.verify-button {
+  width: 100%;
+  background: var(--otp-button-primary);
+  color: var(--otp-text-light);
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.verify-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.verify-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.otp-resend {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.resend-button {
+  background: none;
+  border: 2px solid var(--otp-button-secondary);
+  color: var(--otp-button-secondary);
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  background: var(--otp-bg-primary);
+}
+
+.resend-button:hover:not(:disabled) {
+  background: var(--otp-button-secondary);
+  color: var(--otp-text-light);
+}
+
+.resend-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.countdown {
+  color: var(--otp-text-secondary);
+  font-size: 0.9rem;
+}
+
+.otp-error {
+  background: var(--otp-error-bg);
+  color: var(--otp-error-text);
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border-left: 4px solid var(--otp-error-border);
+}
+
+.otp-success {
+  padding: 40px 20px;
+}
+
+.success-icon {
+  color: var(--otp-success-icon);
+  margin-bottom: 20px;
+}
+
+.success-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--otp-success-text);
+  margin-bottom: 10px;
+}
+
+.success-message {
+  color: var(--otp-text-secondary);
+  margin-bottom: 30px;
+}
+
+.success-button {
+  background: var(--otp-button-success);
+  color: var(--otp-text-light);
+  border: none;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.success-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .otp-input {
+    border-width: 3px;
+  }
+  
+  .otp-back-button {
+    border-width: 3px;
+  }
+  
+  .resend-button {
+    border-width: 3px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .otp-input,
+  .verify-button,
+  .resend-button,
+  .success-button,
+  .otp-back-button {
+    transition: none;
+  }
+  
+  .verify-button:hover:not(:disabled),
+  .resend-button:hover:not(:disabled),
+  .success-button:hover,
+  .otp-back-button:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .otp-content {
+    padding: 30px 20px;
+  }
+  
+  .otp-inputs {
+    gap: 8px;
+  }
+  
+  .otp-input {
+    width: 45px;
+    height: 55px;
+    font-size: 1.3rem;
+  }
+  
+  .otp-title {
+    font-size: 1.7rem;
+  }
+  
+  .otp-back-button {
+    top: 15px;
+    left: 15px;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+}

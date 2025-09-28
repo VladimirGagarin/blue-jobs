@@ -43,7 +43,11 @@ export default function Login() {
   const [error, setError] = useState("");
   const [videoError, setVideoError] = useState(false);
 
-  
+  // Simple slideshow state
+  // Slideshow states
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [slideDirection, setSlideDirection] = useState("right");
+  const [key, setKey] = useState(0); // Key to force re-animation
 
   const { login } = useUser();
   const { language, setLanguage } = useLanguage();
@@ -236,7 +240,7 @@ export default function Login() {
             </video>
           ) : (
             <img
-              src={officeImages[3]}
+              src={officeImages[currentImageIndex]}
               alt="Background"
               className="background-media"
             />
@@ -260,10 +264,10 @@ export default function Login() {
                 </video>
               ) : (
                 <img
-                 
-                  src={officeImages[3]}
+                  key={`${currentImageIndex}-${slideDirection}- ${key}`} // Force re-render
+                  src={officeImages[currentImageIndex]}
                   alt="Login Visual"
-                  className={`media-content slide-image`}
+                  className={`media-content slide-image slide-${slideDirection}`}
                 />
               )}
               <div className="media-overlay"></div>

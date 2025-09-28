@@ -263,7 +263,7 @@ export default function Login() {
                  
                   src={officeImages[3]}
                   alt="Login Visual"
-                  className={`media-content slide-image`}
+                  className={`media-content slide-image slide-${slideDirection}`}
                 />
               )}
               <div className="media-overlay"></div>

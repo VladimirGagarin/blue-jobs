@@ -29,8 +29,7 @@ const routes = [
   { path: "/signup", element: <SignupPage /> },
   { path: "*", element: <NotFoundPage /> },
   { path: "/consent", element:<Consent/>},
-  {path: "/profile",element: <ProfileContent/>},
-  {path: "/otp", element: <OTP/>}
+  {path: "/profile",element: <ProfileContent/>}
 ];
 
 const router =

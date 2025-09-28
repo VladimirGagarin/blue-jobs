@@ -260,10 +260,10 @@ export default function Login() {
                 </video>
               ) : (
                 <img
-                 
+                  key={`${currentImageIndex}-${slideDirection}- ${key}`} // Force re-render
                   src={officeImages[3]}
                   alt="Login Visual"
-                  className={`media-content slide-image`}
+                  className={`media-content slide-image slide-${slideDirection}`}
                 />
               )}
               <div className="media-overlay"></div>

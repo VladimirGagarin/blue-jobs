@@ -43,7 +43,11 @@ export default function Login() {
   const [error, setError] = useState("");
   const [videoError, setVideoError] = useState(false);
 
-  
+  // Simple slideshow state
+  // Slideshow states
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [slideDirection, setSlideDirection] = useState("right");
+  const [key, setKey] = useState(0); // Key to force re-animation
 
   const { login } = useUser();
   const { language, setLanguage } = useLanguage();
@@ -82,7 +86,27 @@ export default function Login() {
     initializeLanguage();
   }, [language, setLanguage]);
 
-  
+  // Simple slideshow effect - changes image every 5 seconds
+  // Slideshow effect with proper animation triggering
+  useEffect(() => {
+    if (!videoError) return;
+
+    const interval = setInterval(() => {
+      // Change direction first
+      setSlideDirection((prev) => (prev === "right" ? "left" : "right"));
+
+      // Then change image after a tiny delay to ensure animation
+      setTimeout(() => {
+        setCurrentImageIndex((prev) =>
+          prev === officeImages.length - 1 ? 0 : prev + 1
+        );
+        // Force re-animation by changing the key
+        setKey((prev) => prev + 1);
+      }, 50);
+    }, 10000);
+
+    return () => clearInterval(interval);
+  }, [videoError]);
 
   // Text content based on language
   const content = {
@@ -173,16 +197,14 @@ export default function Login() {
       };
 
       // In your Login component's handleSubmit function
-      // In your Login component's handleSubmit function
       if (login) {
         const success = login(mockUser);
         if (success) {
-          navigate("/otp", {
+          navigate(`/otp?userId=${mockUser.userId}`, {
             replace: true,
             state: {
               userEmail: mockUser.userEmail,
               userPhone: mockUser.userPhoneNumber,
-              action: "login", // or "signup"
             },
           });
         } else {
@@ -236,7 +258,7 @@ export default function Login() {
             </video>
           ) : (
             <img
-              src={officeImages[3]}
+              src={officeImages[currentImageIndex]}
               alt="Background"
               className="background-media"
             />
@@ -260,10 +282,10 @@ export default function Login() {
                 </video>
               ) : (
                 <img
-                 
-                  src={officeImages[3]}
+                  key={`${currentImageIndex}-${slideDirection}-{key}`} // Force re-render
+                  src={officeImages[5]}
                   alt="Login Visual"
-                  className={`media-content slide-image`}
+                  className={`media-content slide-image slide-${slideDirection}`}
                 />
               )}
               <div className="media-overlay"></div>

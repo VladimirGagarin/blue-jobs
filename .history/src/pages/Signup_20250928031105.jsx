@@ -84,7 +84,6 @@ export default function SignupPage() {
       userApplyTokens: 0,
       userDateCreated: new Date().toISOString(),
       userPassportPhoto: null,
-      userNotifications: [],
     };
 
     updateUser(newUser);
