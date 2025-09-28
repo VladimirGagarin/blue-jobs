@@ -1,5 +1,5 @@
 // src/pages/Signup.jsx
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser, useLanguage } from "../components/useUser";
 import "./Signup.css";
@@ -14,8 +14,7 @@ export default function SignupPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [errors, setErrors] = useState({});
-  const { language, setLanguage } = useLanguage();
-  const hasAutoDetectLanguage = useRef(false);
+  const { language } = useLanguage();
 
   // Translations
   const translations = {

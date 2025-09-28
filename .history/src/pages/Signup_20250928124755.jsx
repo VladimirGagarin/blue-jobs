@@ -14,8 +14,8 @@ export default function SignupPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [errors, setErrors] = useState({});
-  const { language, setLanguage } = useLanguage();
-  const hasAutoDetectLanguage = useRef(false);
+  const { language } = useLanguage();
+  const hasAutoDetectLanguage = useRef
 
   // Translations
   const translations = {

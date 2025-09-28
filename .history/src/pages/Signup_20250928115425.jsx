@@ -1,11 +1,11 @@
 // src/pages/Signup.jsx
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser, useLanguage } from "../components/useUser";
 import "./Signup.css";
 import { FaHome, FaEye, FaEyeSlash } from "react-icons/fa";
 import LoadingPage from "../components/LoadingPage";
-import BgImg from "../assets/office_002.jpg";
+import BgImg from "../assets/pffice_002.jpg";
 
 export default function SignupPage() {
   const { updateUser } = useUser();
@@ -14,8 +14,7 @@ export default function SignupPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [errors, setErrors] = useState({});
-  const { language, setLanguage } = useLanguage();
-  const hasAutoDetectLanguage = useRef(false);
+  const { language } = useLanguage();
 
   // Translations
   const translations = {
@@ -154,33 +153,6 @@ export default function SignupPage() {
 
   // Persistent generated ID
   const [userId, setUserId] = useState("");
-
-
-   // Language detection on component mount
-      useEffect(() => {
-        if (hasAutoDetectLanguage.current) return;
-    
-        const initializeLanguage = () => {
-          const savedLanguage = localStorage.getItem("preferredLanguage");
-          if (savedLanguage === "fr" || savedLanguage === "en") {
-            if (language !== savedLanguage) {
-              setLanguage(savedLanguage);
-            }
-            hasAutoDetectLanguage.current = true;
-            return;
-          }
-    
-          const browserLanguage = navigator.language?.split("-")[0];
-          const finalLanguage = browserLanguage === "fr" ? "fr" : "en";
-    
-          if (language !== finalLanguage) {
-            setLanguage(finalLanguage);
-            localStorage.setItem("preferredLanguage", finalLanguage);
-          }
-          hasAutoDetectLanguage.current = true;
-        };
-        initializeLanguage();
-      }, [language, setLanguage]);
 
   // Generate once on mount
   useEffect(() => {
