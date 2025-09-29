@@ -1,0 +1,103 @@
+/* src/pages/JobsDisplay.css */
+.jobs-display {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+.jobs-main-content {
+  flex: 1;
+  padding: 0 20px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.jobs-list-container {
+  margin-top: 24px;
+}
+
+.jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.no-jobs-found {
+  text-align: center;
+  padding: 60px 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.no-jobs-found h3 {
+  color: #333;
+  margin-bottom: 12px;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.no-jobs-found p {
+  color: #666;
+  margin-bottom: 24px;
+  font-size: 1rem;
+}
+
+.clear-filters-btn {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.clear-filters-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .jobs-main-content {
+    padding: 0 16px 32px;
+  }
+
+  .jobs-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .no-jobs-found {
+    padding: 40px 16px;
+  }
+
+  .no-jobs-found h3 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .jobs-main-content {
+    padding: 0 12px 24px;
+  }
+
+  .jobs-grid {
+    gap: 16px;
+  }
+
+  .no-jobs-found {
+    padding: 32px 12px;
+  }
+
+  .no-jobs-found h3 {
+    font-size: 1.2rem;
+  }
+}
