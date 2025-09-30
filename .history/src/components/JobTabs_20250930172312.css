@@ -1,0 +1,377 @@
+/* src/components/JobsTabs/JobsTabs.css */
+:root {
+  --primary-color: #667eea;
+  --primary-dark: #5a6fd8;
+  --primary-light: #7c8fee;
+  --secondary-color: #764ba2;
+  --background-color: #ffffff;
+  --surface-color: #f8f9fa;
+  --text-primary: #1a1a1a;
+  --text-secondary: #4a4a4a;
+  --text-muted: #6b7280;
+  --border-color: #e5e7eb;
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+/* Dark theme using prefers-color-scheme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #7c8fee;
+    --primary-dark: #667eea;
+    --primary-light: #9baef2;
+    --secondary-color: #8b5fb3;
+    --background-color: #0f0f0f;
+    --surface-color: #1a1a1a;
+    --text-primary: #f5f5f5;
+    --text-secondary: #d4d4d4;
+    --text-muted: #a3a3a3;
+    --border-color: #404040;
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 8px 25px rgba(124, 143, 238, 0.3);
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  :root {
+    --border-color: #000000;
+    --text-primary: #000000;
+    --text-secondary: #000000;
+    --shadow: 0 0 0 2px #000000;
+  }
+}
+
+@media (prefers-color-scheme: dark) and (prefers-contrast: high) {
+  :root {
+    --border-color: #ffffff;
+    --text-primary: #ffffff;
+    --text-secondary: #ffffff;
+    --shadow: 0 0 0 2px #ffffff;
+  }
+}
+
+.jobs-tabs {
+  display: flex;
+  background: color-mix(in srgb, var(--background-color) 95%, transparent);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  padding: 8px;
+  margin: 10px 0;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  border: 1px solid color-mix(in srgb, var(--border-color) 20%, transparent);
+  max-width: 1200px;
+  width:100%;
+  margin-left: auto;
+  margin-right: auto;
+  transition: all 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jobs-tabs {
+    transition: none;
+  }
+}
+
+.tab-button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 24px;
+  border: 2px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab-button {
+    transition: none;
+  }
+}
+
+.tab-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.6s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab-button::before {
+    display: none;
+  }
+}
+
+.tab-button:hover::before {
+  left: 100%;
+}
+
+.tab-button:hover {
+  color: var(--primary-color);
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--primary-color) 30%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab-button:hover {
+    transform: none;
+  }
+}
+
+.tab-button:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  border-color: var(--primary-color);
+}
+
+.tab-button.active {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+  border-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab-button.active {
+    transform: none;
+  }
+}
+
+.tab-button.active:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+.tab-icon {
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab-icon {
+    transition: none;
+  }
+}
+
+.tab-button.active .tab-icon {
+  transform: scale(1.1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab-button.active .tab-icon {
+    transform: none;
+  }
+}
+
+.tab-text {
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.tab-indicator {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab-indicator {
+    transition: none;
+  }
+}
+
+.tab-button.active .tab-indicator {
+  width: 30px;
+}
+
+/* High contrast mode adjustments */
+@media (prefers-contrast: high) {
+  .jobs-tabs {
+    border-width: 2px;
+  }
+  
+  .tab-button {
+    border-width: 3px;
+  }
+  
+  .tab-button.active {
+    border-width: 3px;
+    border-color: var(--text-primary);
+  }
+  
+  .tab-indicator {
+    height: 4px;
+  }
+}
+
+/* Focus management for accessibility */
+.jobs-tabs *:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* High contrast focus styles */
+@media (prefers-contrast: high) {
+  .jobs-tabs *:focus-visible {
+    outline: 3px solid var(--text-primary);
+    outline-offset: 3px;
+  }
+}
+
+/* Reduced motion for all interactive elements */
+@media (prefers-reduced-motion: reduce) {
+  .jobs-tabs * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .jobs-tabs {
+    background: white !important;
+    box-shadow: none;
+    border: 1px solid #000 !important;
+    -webkit-backdrop-filter:none;
+    backdrop-filter: none;
+  }
+  
+  .tab-button {
+    border: 1px solid #000 !important;
+    color: #000 !important;
+  }
+  
+  .tab-button.active {
+    background: #000 !important;
+    color: white !important;
+    box-shadow: none;
+  }
+  
+  .tab-indicator {
+    display: none;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .jobs-tabs {
+    margin: 10px 0;
+    width: 98%;
+    border-radius:
+  }
+
+  .tab-button {
+    padding: 14px 20px;
+    font-size: 0.9rem;
+  }
+
+  .tab-icon {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .jobs-tabs {
+    padding: 6px;
+  }
+
+  .tab-button {
+    padding: 12px 16px;
+    font-size: 0.85rem;
+    gap: 6px;
+  }
+
+  .tab-text {
+    font-size: 0.8rem;
+  }
+  
+  .tab-indicator {
+    bottom: 2px;
+    height: 2px;
+  }
+  
+  .tab-button.active .tab-indicator {
+    width: 20px;
+  }
+}
+
+/* Reduced motion animation alternatives */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.jobs-tabs {
+  animation: fadeIn 0.5s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jobs-tabs {
+    animation: fadeIn 0.1s ease;
+  }
+}
+
+/* Ensure proper color contrast for active state */
+.tab-button.active {
+  color: white;
+}
+
+/* Additional high contrast improvements */
+@media (prefers-contrast: high) {
+  .tab-button {
+    font-weight: 700;
+  }
+  
+  .tab-button.active {
+    font-weight: 800;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .tab-button:hover {
+    transform: none;
+    border-color: transparent;
+  }
+  
+  .tab-button:hover::before {
+    left: -100%;
+  }
+  
+  .tab-button:active {
+    background: color-mix(in srgb, var(--primary-color) 10%, transparent);
+    transform: scale(0.98);
+  }
+  
+  .tab-button.active:active {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    transform: scale(0.98);
+  }
+}
