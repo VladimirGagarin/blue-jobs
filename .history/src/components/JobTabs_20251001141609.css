@@ -1,0 +1,288 @@
+/* src/components/JobsTabs.css */
+:root {
+  --primary-color: #667eea;
+  --primary-dark: #5a6fd8;
+  --primary-light: #7c8fee;
+  --secondary-color: #764ba2;
+  --background-color: #ffffff;
+  --surface-color: #f8f9fa;
+  --text-primary: #1a1a1a;
+  --text-secondary: #4a4a4a;
+  --text-muted: #6b7280;
+  --border-color: #e5e7eb;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 8px 30px rgba(102, 126, 234, 0.15);
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #7c8fee;
+    --primary-dark: #667eea;
+    --primary-light: #9baef2;
+    --secondary-color: #8b5fb3;
+    --background-color: #0f172a;
+    --surface-color: #1e293b;
+    --text-primary: #f5f5f5;
+    --text-secondary: #d4d4d4;
+    --text-muted: #a3a3a3;
+    --border-color: #404040;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 8px 30px rgba(124, 143, 238, 0.2);
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  :root {
+    --border-color: #000000;
+    --text-primary: #000000;
+    --shadow: 0 0 0 2px #000000;
+  }
+}
+
+@media (prefers-color-scheme: dark) and (prefers-contrast: high) {
+  :root {
+    --border-color: #ffffff;
+    --text-primary: #ffffff;
+    --shadow: 0 0 0 2px #ffffff;
+  }
+}
+
+.blue-jobs-tabs {
+  display: flex;
+  background: color-mix(in srgb, var(--surface-color) 95%, transparent);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 8px;
+  margin: 20px auto 32px;
+  max-width: 00px;
+  width: 100%;
+  border: 1px solid color-mix(in srgb, var(--border-color) 20%, transparent);
+  box-shadow: var(--shadow);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blue-jobs-tabs {
+    transition: none;
+  }
+}
+
+.blue-tab-button {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 24px;
+  border: none;
+  background: transparent;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blue-tab-button {
+    transition: none;
+  }
+}
+
+.blue-tab-button:hover {
+  color: var(--primary-color);
+  background: color-mix(in srgb, var(--primary-color) 5%, transparent);
+}
+
+.blue-tab-button:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.blue-tab-button.blue-active {
+  color: var(--primary-color);
+  background: var(--background-color);
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--primary-color) 15%, transparent);
+}
+
+.blue-tab-button.blue-active:hover {
+  background: var(--background-color);
+  box-shadow: var(--shadow-hover);
+}
+
+.blue-tab-icon {
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blue-tab-icon {
+    transition: none;
+  }
+}
+
+.blue-tab-button.blue-active .blue-tab-icon {
+  color: var(--primary-color);
+  transform: scale(1.1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blue-tab-button.blue-active .blue-tab-icon {
+    transform: none;
+  }
+}
+
+.blue-tab-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: all 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blue-tab-text {
+    transition: none;
+  }
+}
+
+.blue-tab-button.blue-active .blue-tab-text {
+  font-weight: 700;
+}
+
+.blue-tab-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  border-radius: 2px 2px 0 0;
+  transform: translateX(-50%);
+  transition: all 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blue-tab-indicator {
+    transition: none;
+  }
+}
+
+.blue-tab-button.blue-active .blue-tab-indicator {
+  width: 80%;
+}
+
+/* High contrast mode adjustments */
+@media (prefers-contrast: high) {
+  .blue-jobs-tabs {
+    border-width: 2px;
+  }
+  
+  .blue-tab-button.blue-active {
+    border: 2px solid var(--text-primary);
+  }
+  
+  .blue-tab-indicator {
+    height: 4px;
+  }
+}
+
+/* Focus management */
+.blue-jobs-tabs *:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* High contrast focus styles */
+@media (prefers-contrast: high) {
+  .blue-jobs-tabs *:focus-visible {
+    outline: 3px solid var(--text-primary);
+    outline-offset: 3px;
+  }
+}
+
+/* Reduced motion for animations */
+@media (prefers-reduced-motion: reduce) {
+  .blue-jobs-tabs * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .blue-jobs-tabs {
+    max-width: 350px;
+    margin-bottom: 24px;
+    border-radius: 16px;
+    padding: 6px;
+  }
+
+  .blue-tab-button {
+    padding: 14px 20px;
+    gap: 8px;
+  }
+
+  .blue-tab-icon {
+    font-size: 1.1rem;
+  }
+
+  .blue-tab-text {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .blue-jobs-tabs {
+    max-width: 300px;
+    margin-bottom: 20px;
+    border-radius: 14px;
+    padding: 4px;
+  }
+
+  .blue-tab-button {
+    padding: 12px 16px;
+    gap: 6px;
+    flex-direction: column;
+  }
+
+  .blue-tab-icon {
+    font-size: 1rem;
+  }
+
+  .blue-tab-text {
+    font-size: 0.85rem;
+  }
+
+  .blue-tab-indicator {
+    height: 2px;
+  }
+}
+
+/* Print styles */
+@media print {
+  .blue-jobs-tabs {
+    background: white !important;
+    border: 2px solid #000 !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+  
+  .blue-tab-button.blue-active {
+    background: #f0f0f0 !important;
+    box-shadow: none !important;
+    border: 1px solid #000 !important;
+  }
+  
+  .blue-tab-indicator {
+    display: none;
+  }
+}
