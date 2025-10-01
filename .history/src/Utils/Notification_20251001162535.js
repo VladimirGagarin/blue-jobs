@@ -16,21 +16,19 @@ export const mockedNotifications = [
       link: "/announcements/maintenance",
       file: null,
       actionLabel: "View Details",
-      icon: "🔧",
+      icon: "🔧"
     },
     notificationDates: {
       dateCreated: "2025-01-15T10:00:00Z",
       dateRead: null,
-      expiryDate: "2025-01-20T23:59:59Z",
+      expiryDate: "2025-01-20T23:59:59Z"
     },
     notificationMetadata: {
       createdBy: "system",
       category: "maintenance",
       tags: ["system", "maintenance"],
-      isDismissible: true,
-      requiresAction: true,
-      relatedJobId: null,
-    },
+      isDismissible: true
+    }
   },
 
   // Job-specific notifications
@@ -48,21 +46,19 @@ export const mockedNotifications = [
       link: "/jobs?category=remote",
       file: null,
       actionLabel: "Browse Jobs",
-      icon: "💼",
+      icon: "💼"
     },
     notificationDates: {
       dateCreated: "2025-01-14T09:30:00Z",
       dateRead: null,
-      expiryDate: null,
+      expiryDate: null
     },
     notificationMetadata: {
       createdBy: "admin",
       category: "feature-update",
       tags: ["jobs", "remote-work", "new-feature"],
-      isDismissible: true,
-      requiresAction: true,
-      relatedJobId: null,
-    },
+      isDismissible: true
+    }
   },
 
   // User-specific notifications
@@ -75,18 +71,17 @@ export const mockedNotifications = [
     notificationStatus: "unread",
     notificationContent: {
       title: "Application Status Update",
-      message:
-        "Your application for 'Senior Frontend Developer' has been viewed by the employer.",
+      message: "Your application for 'Senior Frontend Developer' has been viewed by the employer.",
       image: null,
       link: "/applications/status/app_2024X",
       file: null,
       actionLabel: "View Application",
-      icon: "👀",
+      icon: "👀"
     },
     notificationDates: {
       dateCreated: "2025-01-15T14:20:00Z",
       dateRead: null,
-      expiryDate: "2025-01-30T23:59:59Z",
+      expiryDate: "2025-01-30T23:59:59Z"
     },
     notificationMetadata: {
       createdBy: "system",
@@ -94,8 +89,8 @@ export const mockedNotifications = [
       tags: ["application", "viewed"],
       isDismissible: false,
       relatedJobId: "bj_100A",
-      requiresAction: true,
-    },
+      relatedApplicationId: "app_2024X"
+    }
   },
 
   // Urgent notification
@@ -108,27 +103,25 @@ export const mockedNotifications = [
     notificationStatus: "unread",
     notificationContent: {
       title: "Token Balance Low",
-      message:
-        "You have only 1 apply token remaining. Consider purchasing more tokens to continue applying for jobs.",
+      message: "You have only 1 apply token remaining. Consider purchasing more tokens to continue applying for jobs.",
       image: null,
       link: "/tokens/purchase",
       file: null,
       actionLabel: "Buy Tokens",
-      icon: "⚠️",
+      icon: "⚠️"
     },
     notificationDates: {
       dateCreated: "2025-01-15T16:45:00Z",
       dateRead: null,
-      expiryDate: null,
+      expiryDate: null
     },
     notificationMetadata: {
       createdBy: "system",
       category: "token-warning",
       tags: ["tokens", "warning", "urgent"],
       isDismissible: false,
-      requiresAction: true,
-      relatedJobId: null,
-    },
+      requiresAction: true
+    }
   },
 
   // Success notification
@@ -141,27 +134,25 @@ export const mockedNotifications = [
     notificationStatus: "unread",
     notificationContent: {
       title: "Job Posted Successfully!",
-      message:
-        "Your job 'React Developer' has been published and is now visible to applicants.",
+      message: "Your job 'React Developer' has been published and is now visible to applicants.",
       image: null,
       link: "/my-jobs",
       file: null,
       actionLabel: "View Job",
-      icon: "🎉",
+      icon: "🎉"
     },
     notificationDates: {
       dateCreated: "2025-01-15T11:15:00Z",
       dateRead: null,
-      expiryDate: null,
+      expiryDate: null
     },
     notificationMetadata: {
       createdBy: "system",
       category: "job-posted",
       tags: ["success", "job-posting"],
       isDismissible: true,
-      relatedJobId: "bj_200B",
-      requiresAction: false,
-    },
+      relatedJobId: "bj_200B"
+    }
   },
 
   // Information notification with file
@@ -174,31 +165,28 @@ export const mockedNotifications = [
     notificationStatus: "read",
     notificationContent: {
       title: "New User Guide Available",
-      message:
-        "Check out our updated user guide with tips for job seekers and employers.",
+      message: "Check out our updated user guide with tips for job seekers and employers.",
       image: "/images/guide-cover.jpg",
       link: null,
       file: {
         name: "BlueJobs_User_Guide_v2.pdf",
         url: "/files/BlueJobs_User_Guide_v2.pdf",
         size: "2.4 MB",
-        type: "pdf",
+        type: "pdf"
       },
       actionLabel: "Download Guide",
-      icon: "📚",
+      icon: "📚"
     },
     notificationDates: {
       dateCreated: "2025-01-10T08:00:00Z",
       dateRead: "2025-01-12T14:30:00Z",
-      expiryDate: null,
+      expiryDate: null
     },
     notificationMetadata: {
       createdBy: "admin",
       category: "documentation",
       tags: ["guide", "help", "documentation"],
-      isDismissible: true,
-      requiresAction: true,
-      relatedJobId: null,
-    },
-  },
+      isDismissible: true
+    }
+  }
 ];

@@ -133,12 +133,12 @@ const Navbar = () => {
                             </li>
                             <li
                                 onClick={() => {
-                                    navigate(`/job?type=post`);
+                                    navigate(`/job?type=post&userId=${user.userId}`);
                                 }}
                             >
                                 {language === "fr" ? "Publier une offre" : "Post Job"}
                             </li>
-                            <li onClick={() => navigate(`/job?type=get`)}>
+                            <li onClick={() => navigate(`/job?type=get&userId=${user.userId}`)}>
                                 {language === "fr" ? "Obtenir des offres" : "Get Jobs"}
                             </li>
                         </>

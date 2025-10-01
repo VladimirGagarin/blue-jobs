@@ -28,8 +28,6 @@ export const mockedNotifications = [
       category: "maintenance",
       tags: ["system", "maintenance"],
       isDismissible: true,
-      requiresAction: true,
-      relatedJobId: null,
     },
   },
 
@@ -60,8 +58,6 @@ export const mockedNotifications = [
       category: "feature-update",
       tags: ["jobs", "remote-work", "new-feature"],
       isDismissible: true,
-      requiresAction: true,
-      relatedJobId: null,
     },
   },
 
@@ -94,7 +90,7 @@ export const mockedNotifications = [
       tags: ["application", "viewed"],
       isDismissible: false,
       relatedJobId: "bj_100A",
-      requiresAction: true,
+      relatedApplicationId: "app_2024X",
     },
   },
 
@@ -127,7 +123,6 @@ export const mockedNotifications = [
       tags: ["tokens", "warning", "urgent"],
       isDismissible: false,
       requiresAction: true,
-      relatedJobId: null,
     },
   },
 
@@ -160,7 +155,6 @@ export const mockedNotifications = [
       tags: ["success", "job-posting"],
       isDismissible: true,
       relatedJobId: "bj_200B",
-      requiresAction: false,
     },
   },
 
@@ -197,7 +191,6 @@ export const mockedNotifications = [
       category: "documentation",
       tags: ["guide", "help", "documentation"],
       isDismissible: true,
-      requiresAction: true,
       relatedJobId: null,
     },
   },

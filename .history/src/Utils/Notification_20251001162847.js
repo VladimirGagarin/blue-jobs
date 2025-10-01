@@ -28,8 +28,7 @@ export const mockedNotifications = [
       category: "maintenance",
       tags: ["system", "maintenance"],
       isDismissible: true,
-      requiresAction: true,
-      relatedJobId: null,
+      
     },
   },
 

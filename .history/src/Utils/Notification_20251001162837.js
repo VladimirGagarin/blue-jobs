@@ -28,8 +28,6 @@ export const mockedNotifications = [
       category: "maintenance",
       tags: ["system", "maintenance"],
       isDismissible: true,
-      requiresAction: true,
-      relatedJobId: null,
     },
   },
 
@@ -60,8 +58,6 @@ export const mockedNotifications = [
       category: "feature-update",
       tags: ["jobs", "remote-work", "new-feature"],
       isDismissible: true,
-      requiresAction: true,
-      relatedJobId: null,
     },
   },
 
@@ -95,6 +91,7 @@ export const mockedNotifications = [
       isDismissible: false,
       relatedJobId: "bj_100A",
       requiresAction: true,
+     
     },
   },
 
