@@ -10,19 +10,27 @@ export const mockedNotifications = [
     notificationPriority: "medium", // "low", "medium", "high", "urgent"
     notificationStatus: "unread", // "unread", "read", "dismissed", "archived"
     notificationContent: {
-      title: {en:"System Maintenance", fr:"", sw:""},
-      message: {en:"The platform will undergo maintenance on Saturday from 2-4 AM.", fr: "", sw: ""},
+      title: "System Maintenance",
+      message: "The platform will undergo maintenance on Saturday from 2-4 AM.",
       image: null,
-      link: null, // website or external link for system is null
+      link: "/announcements/maintenance",
       file: null,
-      icon: "", // icon will resonate notification type
+      actionLabel: "View Details",
+      icon: "🔧",
     },
     notificationDates: {
       dateCreated: "2025-01-15T10:00:00Z",
       dateRead: null,
       expiryDate: "2025-01-20T23:59:59Z",
     },
-     isDismissible: true, // can deleted  or archieved 
+    notificationMetadata: {
+      createdBy: "system",
+      category: "maintenance",
+      tags: ["system", "maintenance"],
+      isDismissible: true,
+      requiresAction: true,
+      // relatedJobId: null,
+    },
   },
 
   // Job-specific notifications
@@ -187,6 +195,7 @@ export const mockedNotifications = [
     notificationMetadata: {
       createdBy: "admin",
       category: "documentation",
+      tags: ["guide", "help", "documentation"],
       isDismissible: true,
       requiresAction: true,
       relatedJobId: null,

@@ -10,11 +10,12 @@ export const mockedNotifications = [
     notificationPriority: "medium", // "low", "medium", "high", "urgent"
     notificationStatus: "unread", // "unread", "read", "dismissed", "archived"
     notificationContent: {
-      title: {en:"System Maintenance", fr:"", sw:""},
+      title: "System Maintenance",
       message: {en:"The platform will undergo maintenance on Saturday from 2-4 AM.", fr: "", sw: ""},
       image: null,
-      link: null, // website or external link for system is null
+      link: "/announcements/maintenance",
       file: null,
+      actionLabel: "View Details",
       icon: "", // icon will resonate notification type
     },
     notificationDates: {
@@ -22,7 +23,13 @@ export const mockedNotifications = [
       dateRead: null,
       expiryDate: "2025-01-20T23:59:59Z",
     },
-     isDismissible: true, // can deleted  or archieved 
+    notificationMetadata: {
+      createdBy: "system",
+      category: "maintenance",
+      isDismissible: true,
+      requiresAction: true,
+      // relatedJobId: null,
+    },
   },
 
   // Job-specific notifications
@@ -192,4 +199,3 @@ export const mockedNotifications = [
       relatedJobId: null,
     },
   },
-];

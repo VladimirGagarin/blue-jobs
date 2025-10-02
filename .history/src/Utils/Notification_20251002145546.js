@@ -22,7 +22,11 @@ export const mockedNotifications = [
       dateRead: null,
       expiryDate: "2025-01-20T23:59:59Z",
     },
-     isDismissible: true, // can deleted  or archieved 
+    notificationMetadata: {
+      createdBy: "system",
+      isDismissible: true, // can deleted  or archieved 
+      requiresAction: true,
+    },
   },
 
   // Job-specific notifications
