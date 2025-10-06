@@ -1,0 +1,347 @@
+/* src/components/Notifications.css */
+.blue-notifications-container {
+  background: var(--bg-primary);
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 4.;
+}
+
+.blue-notifications-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.blue-notifications-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.blue-notifications-title-icon {
+  color: var(--primary-color);
+}
+
+.blue-notifications-badge {
+  background: var(--error-color);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.blue-notifications-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.blue-notifications-close:hover {
+  background: var(--surface-color);
+  color: var(--text-primary);
+}
+
+.blue-notifications-filters {
+  display: flex;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color);
+  gap: 8px;
+}
+
+.blue-filter-btn {
+  flex: 1;
+  padding: 8px 16px;
+  border: 1px solid var(--border-color);
+  background: var(--surface-color);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.blue-filter-btn.blue-active {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.blue-notifications-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.blue-no-notifications {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-muted);
+}
+
+.blue-no-notifications-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.blue-no-notifications-text {
+  font-size: 0.95rem;
+}
+
+.blue-notification-item {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.blue-notification-item.blue-unread {
+  background: color-mix(in srgb, var(--primary-color) 5%, transparent);
+  border-left: 4px solid var(--primary-color);
+}
+
+.blue-notification-item.blue-priority-urgent {
+  border-left: 4px solid var(--error-color);
+}
+
+.blue-notification-item.blue-priority-high {
+  border-left: 4px solid var(--warning-color);
+}
+
+.blue-notification-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.blue-notification-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.blue-notification-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.blue-notification-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.blue-notification-priority {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 8px;
+  text-transform: uppercase;
+}
+
+.blue-notification-priority.urgent {
+  background: var(--error-color);
+  color: white;
+}
+
+.blue-notification-priority.high {
+  background: var(--warning-color);
+  color: white;
+}
+
+.blue-notification-priority.medium {
+  background: var(--primary-color);
+  color: white;
+}
+
+.blue-notification-priority.low {
+  background: var(--text-muted);
+  color: white;
+}
+
+.blue-notification-message {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.blue-notification-file {
+  margin-bottom: 12px;
+}
+
+.blue-file-download-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: color-mix(in srgb, var(--primary-color) 10%, transparent);
+  color: var(--primary-color);
+  border: 1px solid color-mix(in srgb, var(--primary-color) 30%, transparent);
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.blue-file-download-btn:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+.blue-file-size {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.blue-notification-meta {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.blue-notification-type {
+  text-transform: capitalize;
+}
+
+.blue-notification-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.blue-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--surface-color);
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.blue-link-btn {
+  color: var(--primary-color);
+  border-color: color-mix(in srgb, var(--primary-color) 30%, transparent);
+}
+
+.blue-link-btn:hover {
+  background: color-mix(in srgb, var(--primary-color) 10%, transparent);
+}
+
+.blue-read-btn {
+  color: var(--success-color);
+  border-color: color-mix(in srgb, var(--success-color) 30%, transparent);
+}
+
+.blue-read-btn:hover {
+  background: color-mix(in srgb, var(--success-color) 10%, transparent);
+}
+
+.blue-unread-btn {
+  color: var(--warning-color);
+  border-color: color-mix(in srgb, var(--warning-color) 30%, transparent);
+}
+
+.blue-unread-btn:hover {
+  background: color-mix(in srgb, var(--warning-color) 10%, transparent);
+}
+
+.blue-archive-btn {
+  color: var(--text-muted);
+  border-color: color-mix(in srgb, var(--text-muted) 30%, transparent);
+}
+
+.blue-archive-btn:hover {
+  background: color-mix(in srgb, var(--text-muted) 10%, transparent);
+}
+
+.blue-delete-btn {
+  color: var(--error-color);
+  border-color: color-mix(in srgb, var(--error-color) 30%, transparent);
+}
+
+.blue-delete-btn:hover {
+  background: color-mix(in srgb, var(--error-color) 10%, transparent);
+}
+
+.blue-notifications-footer {
+  display: flex;
+  gap: 12px;
+  padding: 16px 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+.blue-footer-btn {
+  flex: 1;
+  padding: 10px 16px;
+  border: 1px solid var(--border-color);
+  background: var(--surface-color);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.blue-mark-all-read {
+  color: var(--success-color);
+  border-color: color-mix(in srgb, var(--success-color) 30%, transparent);
+}
+
+.blue-mark-all-read:hover {
+  background: color-mix(in srgb, var(--success-color) 10%, transparent);
+}
+
+.blue-clear-all {
+  color: var(--error-color);
+  border-color: color-mix(in srgb, var(--error-color) 30%, transparent);
+}
+
+.blue-clear-all:hover {
+  background: color-mix(in srgb, var(--error-color) 10%, transparent);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .blue-notifications-container {
+    width: 100vw;
+    height: 100vh;
+    max-height: none;
+    border-radius: 0;
+  }
+  
+  .blue-notification-actions {
+    flex-direction: column;
+  }
+  
+  .blue-action-btn {
+    justify-content: center;
+  }
+}

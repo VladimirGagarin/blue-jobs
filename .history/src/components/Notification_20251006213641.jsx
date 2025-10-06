@@ -17,12 +17,10 @@ import {
   getNotificationIcon,
 } from "../Utils/Notification.js";
 import "./Notification.css";
-import { useNavigate } from "react-router-dom";
 
-export default function Notifications({ user, language}) {
+export default function Notifications({ user, language, onClose }) {
   const [notifications, setNotifications] = useState([]);
   const [filter, setFilter] = useState("all"); // "all", "unread", "read"
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (user) {
@@ -106,10 +104,6 @@ export default function Notifications({ user, language}) {
   const unreadCount = notifications.filter(
     (n) => n.notificationStatus === "unread"
   ).length;
-
-  const  onClose = () => {
-    navigate("/?panel=home");
-  }
 
   return (
     <div className="blue-notifications-container">

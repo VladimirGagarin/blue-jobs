@@ -19,7 +19,7 @@ import {
 import "./Notification.css";
 import { useNavigate } from "react-router-dom";
 
-export default function Notifications({ user, language}) {
+export default function Notifications({ user, language, }) {
   const [notifications, setNotifications] = useState([]);
   const [filter, setFilter] = useState("all"); // "all", "unread", "read"
   const navigate = useNavigate();
